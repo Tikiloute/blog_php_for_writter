@@ -1,2 +1,25 @@
 <?php 
 // ici nous mettrons les infos de la base de données
+
+
+class Article {
+    public $db;
+
+    public function __construct(){
+        $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
+        echo "connexion à la base de données : ok";
+    }
+
+    public function new_article($title, $content){
+        if (empty($title) or empty($content)) { 
+            echo "il manque le titre et / ou le contenu";
+            return;
+        }
+        $this->db->exec("INSERT INTO article(titre, contenu) VALUES('$title', '$content')");
+    }
+
+    public function read(){
+        $articles = $this->db->query('SELECT * from article');
+        return $articles->fetchAll();  
+    }
+}

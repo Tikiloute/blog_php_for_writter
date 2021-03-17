@@ -1,6 +1,8 @@
 <?php 
 
 require('template.php');
+
+
 echo $content;
 
 ?>
@@ -16,7 +18,7 @@ echo $content;
             <h5 class="card-title">article 1</h5>
             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ducimus nemo quam. Quae aut itaque beatae laudantium esse! Molestias doloremque inventore veritatis molestiae reiciendis, amet iusto id alias et sunt est totam aliquam aut non ex distinctio? Deserunt tempora in, voluptates fugiat blanditiis voluptatibus voluptate, ab facilis ad expedita debitis.
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" class="btn btn-primary">En voir plus</a>
         </div>
     </div> 
     <div class="card" style="width: 18rem;">
@@ -25,7 +27,7 @@ echo $content;
             <h5 class="card-title">article 2</h5>
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum sed, ullam tempore repudiandae pariatur aliquid doloribus, eius accusantium recusandae quae nam necessitatibus voluptate sapiente sequi odit eaque numquam quisquam esse hic et exercitationem, deleniti aspernatur dolores ab. Repellendus nulla non, quae eaque expedita eos consectetur libero numquam veritatis est officiis. 
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" class="btn btn-primary">En voir plus</a>
         </div>
     </div> 
     <div class="card" style="width: 18rem;">
@@ -34,7 +36,7 @@ echo $content;
             <h5 class="card-title">article 3</h5>
             <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et ad a facere nisi corrupti id architecto amet necessitatibus odit repudiandae atque eveniet laudantium, quidem eos sit possimus inventore perspiciatis. Et asperiores voluptate hic, ullam, nobis quae cupiditate porro dolor cumque dicta in. Et, omnis. Porro impedit provident temporibus iusto aut
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" class="btn btn-primary">En voir plus</a>
         </div>
     </div> 
 </body>
