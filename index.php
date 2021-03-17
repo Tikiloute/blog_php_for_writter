@@ -2,10 +2,10 @@
 require_once('model.php');
 
 $art = new Article();
-$art->new_article('hello ', 'test test');
+$art->new_article($_POST['titre'], $_POST['contenu']);
 $articles = $art->read();
-//print_r($articles);
-print_r( $articles[0][1]);
+$lastsArticles = array_reverse($articles);
+print_r($lastsArticles);
 require_once("view.php");
 
 

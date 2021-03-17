@@ -6,8 +6,13 @@ class Article {
     public $db;
 
     public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
-        echo "connexion à la base de données : ok";
+        try{
+            $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
+            echo "connexion à la base de données : ok";
+        } catch(PDOException $e) {
+            print "erreur".$e->getMessage();
+            die();
+        }
     }
 
     public function new_article($title, $content){
@@ -16,6 +21,7 @@ class Article {
             return;
         }
         $this->db->exec("INSERT INTO article(titre, contenu) VALUES('$title', '$content')");
+
     }
 
     public function read(){
