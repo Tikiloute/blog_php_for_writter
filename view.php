@@ -21,21 +21,20 @@ echo $head;
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste accusantium, nihil obcaecati nemo vel libero voluptate numquam odit quidem, officiis pariatur! Qui facere architecto commodi, adipisci velit obcaecati delectus error vero ipsum assumenda dolorem deleniti esse recusandae corrupti temporibus. Sequi debitis, esse officia molestiae vitae ullam dignissimos laborum reiciendis a, recusandae voluptas eum vero quisquam error. Aliquam, vel nobis, tenetur velit, ab atque consectetur totam cum iure nihil recusandae! Cum sit fugiat, qui maiores nulla repellat ipsam eum accusamus blanditiis fuga velit temporibus quod quasi aliquam animi molestiae reprehenderit dolores rerum alias iusto dolorum expedita eaque! Quod earum ipsa ducimus quisquam ex molestias sunt, vel magnam at, beatae, minus tempora asperiores laudantium? Ducimus nihil rerum harum, sit unde assumenda molestiae perspiciatis! Non fugiat eum dolor possimus? Aut nemo quam, exercitationem harum repudiandae quis maxime alias amet eum dignissimos deserunt voluptates. Recusandae illo repudiandae consectetur placeat explicabo praesentium tenetur odio accusantium, voluptatum possimus neque magni sapiente, cum ullam nihil rerum? Optio odio suscipit nulla magnam officiis temporibus possimus, natus saepe explicabo, dolore molestiae quo recusandae vel iste. Accusamus vero magni tempora numquam veritatis magnam quia 
         facilis cumque, maiores non libero. Dolorem, totam et! In nemo hic vitae, debitis eveniet nam tempora!
     </p>
-
-
     <?php 
-    if(isset($_GET['identifiant']) && isset($_GET['password'])){
+
+
+    if(isset($_GET['identifiant']) &&  $_GET['identifiant'] === $admin["identifiant"] && isset($_GET['password']) &&  $_GET['password'] === $admin["motDePasse"] ){ 
         $_SESSION['id'] = $_GET['identifiant'];
         $_SESSION['mdp'] = $_GET['password'];
-    };
-    if(!empty($_SESSION['id']) == $admin["identifiant"] && !empty($_SESSION['mdp']) == $admin["motDePasse"]){ ?>
+        ?>
         <h2>Créer votre article ici</h2>
         <form action="#" method="POST" class="card" style="width: 18rem;">
             <input type="text" placeholder="titre" name="titre" class="card-title"/>
             <textarea placeholder="contenu" name="contenu"></textarea>
             <input type="submit" />
         </form>
-    <?php }?>
+    <?php } ?>
     <?php
         for($i = 0; $i <3; $i++){
             if(!empty($lastsArticles[$i]['titre'])){
