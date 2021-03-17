@@ -23,7 +23,7 @@ echo $head;
     </p>
     <?php 
 
-
+//mise en place de l'identification----------------------------------------------------------
     if(isset($_GET['identifiant']) &&  $_GET['identifiant'] === $admin["identifiant"] && isset($_GET['password']) &&  $_GET['password'] === $admin["motDePasse"] ){ 
         $_SESSION['id'] = $_GET['identifiant'];
         $_SESSION['mdp'] = $_GET['password'];
@@ -34,8 +34,11 @@ echo $head;
             <textarea placeholder="contenu" name="contenu"></textarea>
             <input type="submit" />
         </form>
-    <?php } ?>
-    <?php
+    <?php } elseif (isset($_GET['identifiant']) &&  $_GET['identifiant'] != $admin["identifiant"] || isset($_GET['password']) &&  $_GET['password'] != $admin["motDePasse"] ){
+        echo "L'identifiant et / ou le mot de passe sont incorrects";
+                } 
+
+//mise en place des 3 derniers articles écrits-----------------------------------------             
         for($i = 0; $i <3; $i++){
             if(!empty($lastsArticles[$i]['titre'])){
     ?>    
