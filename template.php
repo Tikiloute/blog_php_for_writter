@@ -29,9 +29,15 @@
             <a class="nav-link" href="#">Nous contacter</a>
             </li>
         </ul>
+            <form action="#" method="GET" class="card" style="width: 18rem;">
+                <input type="text" placeholder="identifiant" name="identifiant" class="card-title"/>
+                <input type="text" placeholder="Mot de passe" name="password">   
+                <input type="submit" value="Valider"/>
+            </form>
+        </ul>
         </div>
     </div>
     </nav>
 </header>
 
-<?php $content  = ob_get_clean();?>
+<?php $head  = ob_get_clean();?>

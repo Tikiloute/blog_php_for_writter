@@ -8,7 +8,6 @@ class Article {
     public function __construct(){
         try{
             $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
-            echo "connexion à la base de données : ok";
         } catch(PDOException $e) {
             print "erreur".$e->getMessage();
             die();
@@ -27,5 +26,10 @@ class Article {
     public function read(){
         $articles = $this->db->query('SELECT * from article');
         return $articles->fetchAll();  
+    }
+
+    public function admin(){
+        $admin = $this->db->query('SELECT * from administrateur');
+        return $admin->fetch();
     }
 }
