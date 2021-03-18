@@ -30,7 +30,7 @@
             <a class="nav-link" href="#">Nous contacter</a>
             </li>
         </ul>
-            <form action="#" method="GET" id="login" style="width: 18rem;">
+            <form action="#" method="POST" id="login" >
                 <input type="text" placeholder="identifiant" name="identifiant"/>
                 <input type="text" placeholder="Mot de passe" name="password">   
                 <input type="submit" value="Valider"/>

@@ -16,10 +16,17 @@ echo $head;
     <?php 
 
 //mise en place de l'identification----------------------------------------------------------
-    if(isset($_GET['identifiant']) &&  $_GET['identifiant'] === $admin["identifiant"] && isset($_GET['password']) &&  $_GET['password'] === $admin["motDePasse"] ){ 
-        $_SESSION['id'] = $_GET['identifiant'];
-        $_SESSION['mdp'] = $_GET['password'];
+    if(isset($_POST['identifiant']) &&  $_POST['identifiant'] === $admin["identifiant"] && isset($_POST['password']) &&  $_POST['password'] === $admin["motDePasse"] )
+    { 
+        $_SESSION['id'] = $_POST['identifiant'];
+        $_SESSION['mdp'] = $_POST['password'];
+
         ?>
+        <style type="text/css">
+            #login{
+                display : none;
+            }
+        </style>    
         <h2 class="write-article">Bonjour <?php echo $_SESSION['id'] ?></h2>
         <h3 class="write-article">Créer votre article ici</h3>
         <form action="#" method="POST" class="card" style="width: 20rem;">
@@ -27,21 +34,27 @@ echo $head;
             <textarea placeholder="contenu" name="contenu"></textarea>
             <input type="submit" />
         </form>
-    <?php } elseif (isset($_GET['identifiant']) &&  $_GET['identifiant'] != $admin["identifiant"] || isset($_GET['password']) &&  $_GET['password'] != $admin["motDePasse"] ){
-        echo "<p id='error'> L'identifiant et / ou le mot de passe sont incorrects <p>";
-                } 
+    <?php 
+    } elseif (isset($_POST['identifiant']) &&  $_POST['identifiant'] != $admin["identifiant"] || isset($_POST['password']) &&  $_POST['password'] != $admin["motDePasse"] )
+        {
+            echo "<p id='error'> L'identifiant et / ou le mot de passe sont incorrects <p>";
+        }
 
 //mise en place des 3 derniers articles écrits-----------------------------------------             
-        for($i = 0; $i <3; $i++){
+        for($i = 0; $i <3; $i++)
+        {
             if(!empty($lastsArticles[$i]['titre'])){
     ?>    
-                <div class="card" style="width: 40rem;">
+                <div class="card ">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $lastsArticles[$i]['titre'] ?></h5>
                         <p class="card-text"><?php echo $lastsArticles[$i]['contenu'] ?></p>
-                        <a href="#" class="btn btn-primary">En voir plus</a>
+                        <a href="#" class="btn btn-primary d-grid col-3 mx-auto">En voir plus</a>
                     </div>
                 </div>
-        <?php }} ?>
+        <?php 
+            }
+        } 
+        ?>
 </body>
 </html>
