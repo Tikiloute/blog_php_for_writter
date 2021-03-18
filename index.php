@@ -2,7 +2,7 @@
 require_once('model.php');
 
 $art = new Article();
-//ci dessous if car il ne reconnait pas "titre" et "contenu"
+//ci dessous if car il ne reconnait pas "titre" et "contenu" si ces derniers sont vide
 if (isset($_POST['titre']) && isset($_POST['contenu'])){
     $art->new_article($_POST['titre'], $_POST['contenu']);
 };

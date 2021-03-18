@@ -1,17 +1,9 @@
 
-<script> 
-/**
- * ici permet de plus avoir d'article qui se lance dans la bdd au refresh de la page
-*/   
-    if(typeof window.history.pushState == 'function') {
-        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
-    }
-</script>
+
 
 <?php 
 session_start();
 require('template.php');
-
 echo $head;
 
 ?>
@@ -28,21 +20,22 @@ echo $head;
         $_SESSION['id'] = $_GET['identifiant'];
         $_SESSION['mdp'] = $_GET['password'];
         ?>
-        <h2>Créer votre article ici</h2>
-        <form action="#" method="POST" class="card" style="width: 18rem;">
+        <h2 class="write-article">Bonjour <?php echo $_SESSION['id'] ?></h2>
+        <h3 class="write-article">Créer votre article ici</h3>
+        <form action="#" method="POST" class="card" style="width: 20rem;">
             <input type="text" placeholder="titre" name="titre" class="card-title"/>
             <textarea placeholder="contenu" name="contenu"></textarea>
             <input type="submit" />
         </form>
     <?php } elseif (isset($_GET['identifiant']) &&  $_GET['identifiant'] != $admin["identifiant"] || isset($_GET['password']) &&  $_GET['password'] != $admin["motDePasse"] ){
-        echo "L'identifiant et / ou le mot de passe sont incorrects";
+        echo "<p id='error'> L'identifiant et / ou le mot de passe sont incorrects <p>";
                 } 
 
 //mise en place des 3 derniers articles écrits-----------------------------------------             
         for($i = 0; $i <3; $i++){
             if(!empty($lastsArticles[$i]['titre'])){
     ?>    
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 40rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $lastsArticles[$i]['titre'] ?></h5>
                         <p class="card-text"><?php echo $lastsArticles[$i]['contenu'] ?></p>

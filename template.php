@@ -1,13 +1,14 @@
 <?php ob_start(); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="style.css" media="all">
     <title>Blog de monsieur Jean Forteroche</title>
 </head>
 <header>
@@ -29,8 +30,8 @@
             <a class="nav-link" href="#">Nous contacter</a>
             </li>
         </ul>
-            <form action="#" method="GET" class="card" style="width: 18rem;">
-                <input type="text" placeholder="identifiant" name="identifiant" class="card-title"/>
+            <form action="#" method="GET" id="login" style="width: 18rem;">
+                <input type="text" placeholder="identifiant" name="identifiant"/>
                 <input type="text" placeholder="Mot de passe" name="password">   
                 <input type="submit" value="Valider"/>
             </form>
