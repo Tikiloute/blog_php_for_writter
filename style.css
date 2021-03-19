@@ -45,15 +45,17 @@ h5 {
     text-align: center;
 }
 
+#connect{
+    display: flex;
+    flex-direction: column;
+}
+
 
 @media (max-width: 850px){
     .card{
         width: 100%;
     }
 
-    .btn-primary{
-        width: 70%;
-    }
 }
 
 
