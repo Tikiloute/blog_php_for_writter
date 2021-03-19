@@ -1,12 +1,12 @@
 <?php 
-// ici nous mettrons les infos de la base de données
 
-
-class Article {
+class Article_Manager 
+{
     public $db;
 
-    public function __construct(){
-        try{
+    public function __construct()
+    {
+        try {
             $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
         } catch(PDOException $e) {
             print "erreur".$e->getMessage();
@@ -14,8 +14,10 @@ class Article {
         }
     }
 
-    public function new_article($title, $content){
-        if (empty($title) or empty($content)) { 
+    public function new_article(string $title, string $content): void 
+    {
+        if (empty($title) or empty($content)) 
+        { 
             echo "il manque le titre et / ou le contenu";
             return;
         }
@@ -23,13 +25,11 @@ class Article {
 
     }
 
-    public function read(){
+    public function read(): array
+    {
         $articles = $this->db->query('SELECT * from article');
         return $articles->fetchAll();  
     }
 
-    public function admin(){
-        $admin = $this->db->query('SELECT * from administrateur');
-        return $admin->fetch();
-    }
+    
 }
