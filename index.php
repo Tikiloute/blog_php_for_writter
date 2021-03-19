@@ -16,8 +16,6 @@ $admin = $administrator->admin();
 $lastsArticles = array_reverse($articles);
 
 
-
-
 require("template.php");
 
 
