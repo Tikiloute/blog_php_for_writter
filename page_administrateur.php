@@ -2,6 +2,7 @@
 require_once('view/viewHeader.php');
 
 echo $header;
+
 ?>
 
     <form>

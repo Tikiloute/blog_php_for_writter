@@ -30,7 +30,7 @@ ob_start();
                 <a class="nav-link" href="#">Articles</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="page_administrateur.php">Nous contacter</a>
+                <a class="nav-link" href="page_administrateur.php">Vous connecter</a>
                 </li>
             </ul>
         </div>
@@ -39,6 +39,6 @@ ob_start();
 </header>
 
 <?php 
-$header =ob_get_clean();
+$header = ob_get_clean();
 ?>
 
