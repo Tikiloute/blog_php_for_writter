@@ -1,9 +1,8 @@
 <?php 
-require_once('view/viewHeader.php');
-
-echo $header;
-
-?>
+    require('viewCreateArticle.php');
+    ob_start();
+   
+    ?>
 
     <form>
         <div class="col-12 mt-5">
@@ -20,3 +19,10 @@ echo $header;
             </div>
         </div>
     </form>
+
+    <?php
+        $viewLoggin  = ob_get_clean();
+        $contenu = $createArticle;
+        require_once('template.php');
+        echo $viewLoggin;
+    ?>

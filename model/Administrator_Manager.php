@@ -1,5 +1,5 @@
 <?php 
-require_once('Administrator_Manager.php');
+require_once('model/Article_Manager.php');
 
 class Administrator_Manager extends Article_Manager
 {   
@@ -7,7 +7,7 @@ class Administrator_Manager extends Article_Manager
 
     public function admin()//: ?array
     {
-        $req = $this->db->query('SELECT identifiant from administrateur');
+        $req = $this->db->query('SELECT identifiant from administrateur');// requete ne doit pas tout récup (pseudo)
         // $admin = $req->fetch();
         // if($admin === false){
         //     $admin = null;
