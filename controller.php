@@ -6,23 +6,29 @@ require('view/viewCreateArticle.php');
 require('view/viewLastsArticles.php');
 require('view/viewHeader.php');
 
-$comment = new Comment_Manager();
 
 
 
-function accueil(){
-    $art = new Article_Manager();
-    $articles = $art->read();
-    $lastsArticles = array_reverse($articles);
-    //ci dessous if car il ne reconnait pas "titre" et "contenu" si ces derniers sont vide
+function writeArticle($newArticle){
     if (isset($_POST['titre']) && isset($_POST['contenu'])){
-        $art->new_article($_POST['titre'], $_POST['contenu']);
-    };
+        $newArticle->new_article($_POST['titre'], $_POST['contenu']);
+        echo "votre article a bien été envoyé";
+    } else {
+        "erreur l'article n'a pas été envoyé";
+    }
+    ;
+}
+
+function accueil($newArticle)
+{
+    $articles = $newArticle->read();
+    $lastsArticles = array_reverse($articles);
     require('view/viewAccueil.php');
 }
 
-function administrator(){
-    $administrator = new Administrator_Manager();
-    $admin = $administrator->admin();
+function administrator($owner)
+{
+    $admin = $owner->admin();
     require('view/viewPageAdministrator.php');
 }
+    
