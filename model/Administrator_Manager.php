@@ -7,7 +7,7 @@ class Administrator_Manager extends Article_Manager
 
     public function admin()//: ?array
     {
-        $req = $this->db->query('SELECT identifiant, password from administrateur');// requete ne doit pas tout récup (pseudo)
+        $req = $this->db->query('SELECT identifiant, password from administrateur');
         // $admin = $req->fetch();
         // if($admin === false){
         //     $admin = null;

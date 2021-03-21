@@ -2,8 +2,6 @@
 require_once('model/Article_Manager.php');
 require_once('model/Administrator_Manager.php');
 require_once('model/Comment_Manager.php');
-require('view/viewCreateArticle.php'); 
-
 require('view/viewHeader.php');
 
 
@@ -19,7 +17,7 @@ function writeArticle($newArticle)
     ;
 }
 
-function accueil($newArticle)
+function home($newArticle)
 {
     $articles = $newArticle->read();
     $lastsArticles = array_reverse($articles);
@@ -29,7 +27,6 @@ function accueil($newArticle)
 function administrator($owner)
 {
     $admin = $owner->admin();
-    print_r($admin['password']);
     require('view/viewPageAdministrator.php');
 }
 
@@ -39,6 +36,7 @@ function ArticlesList($newArticle){
     $lastsArticles = array_reverse($articles);
     require('view\viewArticlesList.php');
 }
+
 
 
     
