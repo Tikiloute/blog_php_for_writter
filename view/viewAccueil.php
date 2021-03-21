@@ -1,5 +1,5 @@
 <?php 
-
+require_once('view/viewLastsArticles.php');
 $title = "Accueil";
 
 ob_start();
@@ -12,3 +12,4 @@ ob_start();
 $intro = ob_get_clean(); 
 $contenu = $intro;
 require_once('template.php');
+echo $LastsArticle;

@@ -1,7 +1,7 @@
 <?php 
     ob_start();
-    //mise en place des 3 derniers articles écrits-----------------------------------------         
-        for($i = 0; $i <3; $i++){
+    //mise en place des 3 derniers articles écrits-----------------------------------------        
+        for($i = 0; $i < $arr_length ; $i++){
             if(!empty($lastsArticles[$i]['titre'])){
     ?>    
                 <div class="card ">
@@ -14,6 +14,8 @@
     <?php 
             }
         } 
-    $LastsArticle  = ob_get_clean();
+    $testList  = ob_get_clean();
+    $contenu = $testList;
+    require_once('template.php');
     
     ?>

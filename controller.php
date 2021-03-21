@@ -3,13 +3,13 @@ require_once('model/Article_Manager.php');
 require_once('model/Administrator_Manager.php');
 require_once('model/Comment_Manager.php');
 require('view/viewCreateArticle.php'); 
-require('view/viewLastsArticles.php');
+
 require('view/viewHeader.php');
 
 
 
-
-function writeArticle($newArticle){
+function writeArticle($newArticle)
+{
     if (isset($_POST['titre']) && isset($_POST['contenu'])){
         $newArticle->new_article($_POST['titre'], $_POST['contenu']);
         echo "votre article a bien été envoyé";
@@ -29,6 +29,16 @@ function accueil($newArticle)
 function administrator($owner)
 {
     $admin = $owner->admin();
+    print_r($admin['password']);
     require('view/viewPageAdministrator.php');
 }
+
+function ArticlesList($newArticle){
+    $articles = $newArticle->read();
+    $arr_length =  count($articles);
+    $lastsArticles = array_reverse($articles);
+    require('view\viewArticlesList.php');
+}
+
+
     

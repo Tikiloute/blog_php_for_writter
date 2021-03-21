@@ -1,7 +1,5 @@
 <?php 
-require('view/viewCreateArticle.php'); 
-require('view/viewLastsArticles.php');
-require('view/viewHeader.php')
+
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -25,10 +23,10 @@ require('view/viewHeader.php')
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Articles</a>
+                    <a class="nav-link" href="index.php?action=articles">Articles</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="index.php?action=admin">Vous connecter</a>
@@ -39,7 +37,6 @@ require('view/viewHeader.php')
         </nav>
     </header>
         <?= $contenu ?>
-        <?= $LastsArticles;?>
     </body>
     </html>
 
