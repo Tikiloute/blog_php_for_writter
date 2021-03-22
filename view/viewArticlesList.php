@@ -8,14 +8,14 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $lastsArticles[$i]['titre'] ?></h5>
                         <p class="card-text"><?php echo $lastsArticles[$i]['contenu'] ?></p>
-                        <a href="index.php?action=<?php echo $articles[$i]['id']?>" class="btn btn-primary d-grid col-3 mx-auto">En voir plus</a>
+                        <a href="index.php?read=<?php echo $articles[$i]['id']?>" class="btn btn-primary d-grid col-3 mx-auto">En voir plus</a>
                     </div>
                 </div>
     <?php 
             }
         } 
-    $testList  = ob_get_clean();
-    $contenu = $testList;
+    $List  = ob_get_clean();
+    $contenu = $List;
     require_once('template.php');
     
     ?>

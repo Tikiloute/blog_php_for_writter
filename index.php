@@ -19,11 +19,12 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     logout();
 
-}  elseif(isset($_GET["action"])){
+}  elseif(isset($_GET["read"])){
 
     article($art);
+    writeComment($comment, $art);
 
-} else {
+}  else {
 
     home($art);
 

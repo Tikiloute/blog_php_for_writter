@@ -16,6 +16,19 @@ function writeArticle($newArticle)
     ;
 }
 
+function writeComment($newComment, $newArticle)
+{
+    if (isset($_POST['pseudo']) && isset($_POST['content'])){
+        $newComment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
+        echo "votre commentaire a bien été envoyé";
+    } else {
+        "erreur le commentaire n'a pas été envoyé";
+    };
+    $comments = $newComment->read();
+    $comment_arr_length =  count($comments);
+    require('view\viewCommentsList.php');
+}
+
 function home($newArticle)
 {
     $articles = $newArticle->read();
