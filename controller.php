@@ -2,7 +2,6 @@
 require_once('model/Article_Manager.php');
 require_once('model/Administrator_Manager.php');
 require_once('model/Comment_Manager.php');
-require('view/viewHeader.php');
 
 
 
@@ -35,6 +34,17 @@ function ArticlesList($newArticle){
     $arr_length =  count($articles);
     $lastsArticles = array_reverse($articles);
     require('view\viewArticlesList.php');
+
+}
+
+function logout(){
+    require('view\viewLogout.php');
+}
+
+function article($newArticle){
+    $articles = $newArticle->read();
+    $lastsArticles = array_reverse($articles);
+    require('view\viewArticle.php');
 }
 
 
