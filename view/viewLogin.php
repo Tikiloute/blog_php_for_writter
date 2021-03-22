@@ -10,13 +10,14 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
 
         $_SESSION["identify"] = $username;
         $_SESSION["mdp"] = $password;
+        
         ?>
 
     <style type="text/css">
         #connectingForm{
             display: none;
         }
-        
+
     </style>
 
     <?php
