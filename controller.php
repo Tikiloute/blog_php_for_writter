@@ -29,6 +29,7 @@ function writeComment($newComment)
 
 function commentsList($newComment){
     $comments = $newComment->read();
+    $nowDate = $newComment->date();
     $comment_arr_length = count($comments);
     require_once('view\viewCommentsList.php');
 }
