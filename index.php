@@ -15,7 +15,10 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     ArticlesList($art);
 
-} else {
+} elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
+
+    require('view\viewLogout.php');
+}else {
 
     home($art);
 

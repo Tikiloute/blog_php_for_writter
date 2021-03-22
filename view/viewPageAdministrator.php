@@ -27,41 +27,4 @@
         $contenu = "";
         require_once('template.php');
         echo $viewLogin;
-        $_SESSION["identify"] = '';
-        $_SESSION["mdp"] = '';
-
-
-        if(isset($_POST['id']) && isset($_POST['pswd'])){
-
-            $username = $_POST['id'];
-            $password = $_POST['pswd'];
-
-            if (password_verify($password, $admin['password']) && $username === $admin['identifiant']){
-
-                $_SESSION["identify"] = $username;
-                $_SESSION["mdp"] = $password;
-
-            } else {
-
-                echo "Identifiant et / ou mot de passe erroné";
-
-            };
-
-        }
-        
-        if(password_verify($_SESSION["mdp"], $admin['password']) && $_SESSION["identify"] === $admin['identifiant']){
-?>
-
-            <style type="text/css">
-                #connectingForm{
-                    display: none;
-                }
-            </style>
-            
-<?php
-
-            echo "Vous êtes connecté";
-            echo $createArticle;
-
-        };
-?>
+        require_once('viewLogin.php');
