@@ -16,7 +16,7 @@ function writeArticle($newArticle)
     ;
 }
 
-function writeComment($newComment, $newArticle)
+function writeComment($newComment)
 {
     if (isset($_POST['pseudo']) && isset($_POST['content'])){
         $newComment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
@@ -24,9 +24,13 @@ function writeComment($newComment, $newArticle)
     } else {
         "erreur le commentaire n'a pas été envoyé";
     };
+    
+}
+
+function commentsList($newComment){
     $comments = $newComment->read();
-    $comment_arr_length =  count($comments);
-    require('view\viewCommentsList.php');
+    $comment_arr_length = count($comments);
+    require_once('view\viewCommentsList.php');
 }
 
 function home($newArticle)

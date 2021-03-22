@@ -22,7 +22,8 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 }  elseif(isset($_GET["read"])){
 
     article($art);
-    writeComment($comment, $art);
+    writeComment($comment);
+    commentsList($comment);
 
 }  else {
 
