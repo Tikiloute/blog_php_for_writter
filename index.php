@@ -13,7 +13,7 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
 } elseif(isset($_GET["action"]) && $_GET["action"] ==='articles'){
 
-    ArticlesList($art);
+    articlesList($art);
 
 } elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
 

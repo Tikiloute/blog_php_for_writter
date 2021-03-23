@@ -22,7 +22,6 @@ class Article_Manager
             return;
         }
         $this->db->exec("INSERT INTO article(titre, contenu) VALUES('$title', '$content')");
-
     }
 
     public function read(): array

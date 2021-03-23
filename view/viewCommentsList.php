@@ -6,10 +6,15 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $comments[$i]['identifiant'] ?></h5>
                         <p class="card-text"><?php echo "a dit : ".$comments[$i]['commentaire'] ?></p>
-                        <p class="card-text"><?php echo "Le ".$nowDate['jour']."/".$nowDate['mois']."/".$nowDate['annee']." à ".$nowDate['heure'].":".$nowDate['minute'].":".$nowDate['seconde'] ?></p>
-                        
+                        <p class="card-text"><?php echo $comments[$i]['date']?></p>
+                        <a href="index.php?read=<?php echo $comments[$i]['idArticle']?>" >Signalez ce commentaire</a>
                     </div>
                 </div>
 <?php 
+         
+                if(isset($_GET["action"]) && $_GET["comments"] === $comments[$i][0]){
+                    array_push($warningArray,$comments[$i] );
+                }
             }
        } 
+

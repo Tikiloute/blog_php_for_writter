@@ -27,11 +27,13 @@ function writeComment($newComment)
     
 }
 
-function commentsList($newComment){
+function commentsList($newComment)
+{
+    $warningArray = [];
     $comments = $newComment->read();
-    $nowDate = $newComment->date();
     $comment_arr_length = count($comments);
-    require_once('view\viewCommentsList.php');
+    print_r($warningArray);
+    require('view\viewCommentsList.php');
 }
 
 function home($newArticle)
@@ -47,7 +49,8 @@ function administrator($owner)
     require('view/viewPageAdministrator.php');
 }
 
-function ArticlesList($newArticle){
+function articlesList($newArticle)
+{
     $articles = $newArticle->read();
     $arr_length =  count($articles);
     $lastsArticles = array_reverse($articles);
@@ -55,16 +58,21 @@ function ArticlesList($newArticle){
 
 }
 
-function logout(){
+function logout()
+{
     require('view\viewLogout.php');
 }
 
-function article($newArticle){
+function article($newArticle)
+{
     $articles = $newArticle->read();
     $lastsArticles = array_reverse($articles);
     require('view\viewArticle.php');
 }
 
+function WarningComments()
+{
 
+}
 
     
