@@ -70,8 +70,10 @@ function article($newArticle)
 
 function WarningComments($newComment)
 {
-   // $warnings = $newComment->readWarning();
-   $newComment->newCommentaryWarning(" ", " ", 5);
+    
+   $warnings = $newComment->readWarning();
+   print_r($warnings);
+   //$newComment->newCommentaryWarning();
    // print_r($warnings);
     //require('view\viewWarningcomments.php');
         
