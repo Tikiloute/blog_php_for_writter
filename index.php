@@ -10,6 +10,7 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     administrator($administrator);
     writeArticle($art);
+    WarningComments($comment);
 
 } elseif(isset($_GET["action"]) && $_GET["action"] ==='articles'){
 
@@ -25,7 +26,7 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
     writeComment($comment);
     commentsList($comment);
 
-}  else {
+} else {
 
     home($art);
 

@@ -29,10 +29,8 @@ function writeComment($newComment)
 
 function commentsList($newComment)
 {
-    $warningArray = [];
     $comments = $newComment->read();
     $comment_arr_length = count($comments);
-    print_r($warningArray);
     require('view\viewCommentsList.php');
 }
 
@@ -70,9 +68,13 @@ function article($newArticle)
     require('view\viewArticle.php');
 }
 
-function WarningComments()
+function WarningComments($newComment)
 {
-
+   // $warnings = $newComment->readWarning();
+   $newComment->newCommentaryWarning(" ", " ", 5);
+   // print_r($warnings);
+    //require('view\viewWarningcomments.php');
+        
 }
 
     
