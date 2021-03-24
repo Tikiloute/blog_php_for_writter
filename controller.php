@@ -39,10 +39,36 @@ function WarningComments($newComment)
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['comment'])){
         $newComment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['read'],$_GET['date'] );
         echo "message signalé à la modération";
-        header( "refresh:2;url=index.php?read=".$_GET['read']);
+        header( "refresh:2;url=index.php");
    }else{
         "erreur";
    }    
+}
+
+function deleteCommentbutton($newComment)
+{
+    $warnings = $newComment->readWarning();
+    $warning_arr_length = count($warnings);
+    if(isset($_GET['action']) && isset($_GET['idCom']) && $_GET['action'] === "delete"){
+    $newComment->deleteComment($_GET['idCom']);
+    $newComment->deleteCommentWarning($_GET['idCom']);
+    echo "commentaire supprimé";
+    header( "refresh:2;url=index.php?action=admin");
+    } else {
+        echo "erreur le commentaire n'est pas supprimé";
+    }
+}
+
+function validateCommentButton($newComment){
+    $warnings = $newComment->readWarning();
+    $warning_arr_length = count($warnings);
+    if(isset($_GET['action']) && isset($_GET['idCom']) && $_GET['action'] === "accept"){
+        $newComment->deleteCommentWarning($_GET['idCom']);
+        echo "commentaire validé";
+        header( "refresh:2;url=index.php?action=admin");
+        } else {
+            echo "erreur le commentaire n'est pas validé";
+        }
 }
 
 function home($newArticle)
@@ -79,6 +105,7 @@ function article($newArticle)
     $lastsArticles = array_reverse($articles);
     require('view\viewArticle.php');
 }
+
 
 
 

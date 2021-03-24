@@ -18,7 +18,7 @@ class Comment_Manager extends Article_Manager
 
     public function read(): array
     {
-        $comments = $this->db->query('SELECT * from commentaire INNER JOIN article a ON idArticle = a.id');
+        $comments = $this->db->query('SELECT * from commentaire');
         return $comments->fetchAll();  
     }
 
@@ -33,6 +33,16 @@ class Comment_Manager extends Article_Manager
     {
         $commentsWarning = $this->db->query('SELECT * from commentaire_moderation ');
         return $commentsWarning->fetchAll();  
+    }
+
+    public function deleteComment($idWarningComment)
+    {
+        $this->db->exec("DELETE FROM commentaire WHERE id = $idWarningComment");
+    }
+
+    public function deleteCommentWarning($idWarningComment)
+    {
+        $this->db->exec("DELETE FROM commentaire_moderation WHERE idCommentaire = $idWarningComment");
     }
 
 }

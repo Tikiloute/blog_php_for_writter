@@ -28,6 +28,14 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
     writeComment($comment);
     commentsList($comment);
 
+} elseif(isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['idCom'])){
+
+    deleteCommentbutton($comment);
+
+} elseif(isset($_GET['action']) && $_GET['action'] === "accept" && isset($_GET['idCom'])){
+
+    validateCommentButton($comment);
+
 } else {
 
     home($art);
