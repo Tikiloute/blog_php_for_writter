@@ -36,13 +36,12 @@ function WarningComments($newComment)
 {
    $warnings = $newComment->readWarning();
    $warning_arr_length = count($warnings);
-   //require('view\viewWarningcomments.php');
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['comment'])){
         $newComment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['read'],$_GET['date'] );
         echo "message signalé à la modération";
+        header( "refresh:2;url=index.php?read=".$_GET['read']);
    }else{
         "erreur";
-   // print_r($warnings);
    }    
 }
 

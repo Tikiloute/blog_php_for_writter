@@ -7,6 +7,7 @@ $comment = new Comment_Manager();
 
 
 if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
+
     administrator($administrator, $comment);
     writeArticle($art);
 
@@ -17,7 +18,7 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 } elseif(isset($_GET["id"]) && isset($_GET["comment"])){
     WarningComments($comment);
 
-}elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
+} elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
 
     logout();
 

@@ -31,7 +31,7 @@ class Comment_Manager extends Article_Manager
 
     public function readWarning(): array
     {
-        $commentsWarning = $this->db->query('SELECT * from commentaire_moderation');
+        $commentsWarning = $this->db->query('SELECT * from commentaire_moderation ');
         return $commentsWarning->fetchAll();  
     }
 
