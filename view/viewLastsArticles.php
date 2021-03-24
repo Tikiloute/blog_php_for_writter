@@ -1,7 +1,7 @@
 <?php 
     ob_start();
     //mise en place des 3 derniers articles écrits-----------------------------------------         
-        for($i = 1; $i <= 3; $i++){
+        for($i = 0; $i < 3; $i++){
             if(!empty($lastsArticles[$i]['titre'])){
     ?>    
                 <div class="card ">

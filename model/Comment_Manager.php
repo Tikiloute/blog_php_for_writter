@@ -23,10 +23,9 @@ class Comment_Manager extends Article_Manager
     }
 
 
-    public function newCommentaryWarning($id, $comment, $idComment)
+    public function newCommentaryWarning($id, $comment, $idComment, $date)
     {
-        
-        $this->db->exec("INSERT INTO `commentaire_moderation`(`identifiant`, `commentaire`, `date`, `idCommentaire`) VALUES ( `$id`, `$comment`,NOW(), `$idComment`)");
+        $this->db->exec("INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES('$id', '$comment', '$idComment', '$date')");
         //header('location: index.php?read='.$_GET["read"]);
     }
 

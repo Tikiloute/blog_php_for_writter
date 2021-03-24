@@ -16,7 +16,10 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     articlesList($art);
 
-} elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
+} elseif(isset($_GET["id"]) && isset($_GET["comment"])){
+    WarningComments($comment);
+
+}elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
 
     logout();
 
