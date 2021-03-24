@@ -1,12 +1,16 @@
-<?php
-?>    
-    <div class="card ">
-        <div class="card-body">
-            <h5 class="card-title"><?php echo $comments[$_GET['warning']-1]['identifiant'] ?></h5>
-            <p class="card-text"><?php echo $comments[$_GET['warning']-1]['commentaire'] ?></p>
-            <p class="card-text"><?php echo $comments[$_GET['warning']-1]['date']?></p>
-        </div>
-    </div>
 <?php 
+        for($i = 0; $i < $warning_arr_length ; $i++){
+           
+?>    
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $warnings[$i]['identifiant'] ?></h5>
+                        <p class="card-text"><?php echo "a dit : ".$warnings[$i]['commentaire'] ?></p>
+                        <p class="card-text"><?php echo $warnings[$i]['date']?></p>
+                    </div>
+                </div>
+<?php 
+
+       } 
 
 

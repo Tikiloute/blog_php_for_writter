@@ -1,6 +1,5 @@
 
 <?php 
-
 if(isset($_POST['id']) && isset($_POST['pswd'])){
 
     $username = $_POST['id'];
@@ -10,7 +9,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
 
         $_SESSION["identify"] = $username;
         $_SESSION["mdp"] = $password;
-        
+
         ?>
 
     <style type="text/css">
@@ -24,6 +23,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
 
         echo "Vous êtes connecté";
         echo $createArticle;
+        require('view\viewWarningcomments.php');
     ?>
         <a class="nav-link" href="index.php?action=logout">Vous déconnecter</a>
 
@@ -49,6 +49,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
         
             echo "Vous êtes connecté";
             echo $createArticle;
+            require('view\viewWarningcomments.php');
         ?>
             <a class="nav-link" href="index.php?action=logout">Vous déconnecter</a>
         

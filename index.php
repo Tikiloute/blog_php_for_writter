@@ -7,10 +7,8 @@ $comment = new Comment_Manager();
 
 
 if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
-
-    administrator($administrator);
+    administrator($administrator, $comment);
     writeArticle($art);
-    WarningComments($comment);
 
 } elseif(isset($_GET["action"]) && $_GET["action"] ==='articles'){
 

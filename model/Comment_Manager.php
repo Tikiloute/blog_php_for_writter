@@ -31,7 +31,7 @@ class Comment_Manager extends Article_Manager
 
     public function readWarning(): array
     {
-        $commentsWarning = $this->db->query('SELECT * from commentaire_moderation INNER JOIN commentaire c ON idCommentaire = c.id');
+        $commentsWarning = $this->db->query('SELECT * from commentaire_moderation');
         return $commentsWarning->fetchAll();  
     }
 

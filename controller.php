@@ -35,13 +35,14 @@ function commentsList($newComment)
 function WarningComments($newComment)
 {
    $warnings = $newComment->readWarning();
+   $warning_arr_length = count($warnings);
+   //require('view\viewWarningcomments.php');
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['comment'])){
         $newComment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['read'],$_GET['date'] );
         echo "message signalé à la modération";
    }else{
         "erreur";
    // print_r($warnings);
-    //require('view\viewWarningcomments.php'); 
    }    
 }
 
@@ -52,9 +53,11 @@ function home($newArticle)
     require('view/viewAccueil.php');
 }
 
-function administrator($owner)
+function administrator($owner,$newComment)
 {
     $admin = $owner->admin();
+    $warnings = $newComment->readWarning();
+    $warning_arr_length = count($warnings);
     require('view/viewPageAdministrator.php');
 }
 
