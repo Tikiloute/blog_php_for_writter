@@ -20,9 +20,9 @@ function writeComment($newComment)
 {
     if (isset($_POST['pseudo']) && isset($_POST['content'])){
         $newComment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
-        echo "votre commentaire a bien été envoyé";
+        echo "votre commentaire a bien été envoyé !";
     } else {
-        "erreur le commentaire n'a pas été envoyé";
+        "erreur le commentaire n'a pas été envoyé !";
     };
     
 }
