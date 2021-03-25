@@ -2,8 +2,9 @@
 require_once('controller.php');
 
 $art = new Article_Manager();
-$administrator = new Administrator_Manager();
+$administrator = new Administrator_Manager();//AdmMana
 $comment = new Comment_Manager();
+$manager = new Manager();
 
 
 if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
@@ -15,14 +16,14 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     articlesList($art);
 
-} elseif(isset($_GET["id"]) && isset($_GET["comment"])){
+} elseif(isset($_GET["id"], $_GET["comment"])){
     WarningComments($comment);
 
 } elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
 
     logout();
 
-}  elseif(isset($_GET["read"])){
+}  elseif(isset($_GET["read"])){//index.php?action=read&read=id
 
     article($art);
     writeComment($comment);
@@ -36,7 +37,16 @@ if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
 
     validateCommentButton($comment);
 
-} else {
+} elseif(isset($_GET['modify'])){
+    
+    ModifyarticleView($art);
+
+    if(isset($_GET['titre']) && isset($_GET['contenu']) && isset($_GET['modify'])){
+
+    Modifyarticle($art);
+    }
+
+}else {
 
     home($art);
 

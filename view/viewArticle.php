@@ -13,7 +13,7 @@ $aimArticle = $_GET['read'] - 1;
 <?php 
 
 
-$viewArticle = ob_get_clean();
+$viewArticle = ob_get_clean();// = contenu 
 $contenu = $viewArticle;
 require('template.php');
 require_once('view\viewCommentary.php');

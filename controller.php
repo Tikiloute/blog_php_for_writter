@@ -1,7 +1,9 @@
 <?php
+require_once('model/manager.php');
 require_once('model/Article_Manager.php');
 require_once('model/Administrator_Manager.php');
 require_once('model/Comment_Manager.php');
+
 
 
 
@@ -102,8 +104,24 @@ function logout()
 function article($newArticle)
 {
     $articles = $newArticle->read();
-    $lastsArticles = array_reverse($articles);
+   // $lastsArticles = array_reverse($articles);
     require('view\viewArticle.php');
+}
+
+function ModifyarticleView($newArticle)
+{
+   
+    $articles = $newArticle->read();
+    require('view\viewModifyArticle.php');
+
+}
+
+function Modifyarticle($newArticle)
+{
+   
+    $articles = $newArticle->read();
+    $newArticle->modify($_GET['titre'], $_GET['contenu'],$_GET['modify']);
+
 }
 
 

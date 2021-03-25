@@ -1,6 +1,6 @@
 <?php 
 
-class Article_Manager 
+class Article_Manager extends Manager
 {
     public $db;
 
@@ -30,5 +30,11 @@ class Article_Manager
         return $articles->fetchAll();  
     }
 
-    
+    public function modify($titre, $contenu, $id): void
+    {   
+        $this->db->exec("UPDATE article SET titre='$titre', contenu='$contenu' WHERE id='$id'");
+    }
+
+
+
 }

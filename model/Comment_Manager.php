@@ -2,7 +2,7 @@
 
 
 
-class Comment_Manager extends Article_Manager
+class Comment_Manager extends Article_Manager //exteneds manager
 {   
 
     public function newCommentary($id, $comment, $idArticle): void
@@ -23,7 +23,7 @@ class Comment_Manager extends Article_Manager
     }
 
 
-    public function newCommentaryWarning($id, $comment, $idComment, $date)
+    public function newCommentaryWarning($id, $comment, $idComment, $date): void
     {
         $this->db->exec("INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES('$id', '$comment', '$idComment', '$date')");
     }
@@ -34,12 +34,12 @@ class Comment_Manager extends Article_Manager
         return $commentsWarning->fetchAll();  
     }
 
-    public function deleteComment($idWarningComment)
+    public function deleteComment($idWarningComment): void
     {
         $this->db->exec("DELETE FROM commentaire WHERE id = $idWarningComment");
     }
 
-    public function deleteCommentWarning($idWarningComment)
+    public function deleteCommentWarning($idWarningComment): void
     {
         $this->db->exec("DELETE FROM commentaire_moderation WHERE idCommentaire = $idWarningComment");
     }
