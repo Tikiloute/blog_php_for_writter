@@ -50,12 +50,12 @@ function deleteCommentbutton($newComment)
     $warnings = $newComment->readWarning();
     $warning_arr_length = count($warnings);
     if(isset($_GET['action']) && isset($_GET['idCom']) && $_GET['action'] === "delete"){
-    $newComment->deleteComment($_GET['idCom']);
-    $newComment->deleteCommentWarning($_GET['idCom']);
-    echo "commentaire supprimé";
-    header( "refresh:2;url=index.php?action=admin");
-    } else {
-        echo "erreur le commentaire n'est pas supprimé";
+        $newComment->deleteComment($_GET['idCom']);
+        $newComment->deleteCommentWarning($_GET['idCom']);
+        echo "commentaire supprimé";
+        header( "refresh:2;url=index.php?action=admin");
+        } else {
+            echo "erreur le commentaire n'est pas supprimé";
     }
 }
 
@@ -67,8 +67,8 @@ function validateCommentButton($newComment){
         echo "commentaire validé";
         header( "refresh:2;url=index.php?action=admin");
         } else {
-            echo "erreur le commentaire n'est pas validé";
-        }
+        echo "erreur le commentaire n'est pas validé";
+    }
 }
 
 function home($newArticle)

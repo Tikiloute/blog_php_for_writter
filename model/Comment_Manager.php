@@ -5,7 +5,7 @@
 class Comment_Manager extends Article_Manager
 {   
 
-    public function newCommentary($id, $comment, $idArticle)
+    public function newCommentary($id, $comment, $idArticle): void
     {
         if (empty($id) || empty($comment) ) 
         { 
@@ -26,7 +26,6 @@ class Comment_Manager extends Article_Manager
     public function newCommentaryWarning($id, $comment, $idComment, $date)
     {
         $this->db->exec("INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES('$id', '$comment', '$idComment', '$date')");
-        //header('location: index.php?read='.$_GET["read"]);
     }
 
     public function readWarning(): array
@@ -46,7 +45,5 @@ class Comment_Manager extends Article_Manager
     }
 
 }
-
-
 
 ?>
