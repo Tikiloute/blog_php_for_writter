@@ -27,8 +27,10 @@ class Article_Manager extends Manager
     public function modify($titre, $contenu, $id)
     {   
        // $this->db->exec("UPDATE article SET titre='$titre', contenu='$contenu' WHERE id='$id'");
-        $stm = $this->db->prepare("UPDATE article SET titre=?, contenu=? WHERE id=?");
-        $stm->bind_param('ssi', $titre, $contenu, $id);
+        $stm = $this->db->prepare("UPDATE article SET titre= :title, contenu= :content WHERE id= :id");
+        $stm->bindParam(":title", $titre);
+        $stm->bindParam(":content", $contenu);
+        $stm->bindParam(":id", $id);
         $stm->execute();
     }
 

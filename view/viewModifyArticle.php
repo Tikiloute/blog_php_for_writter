@@ -2,14 +2,15 @@
 ob_start();
 $aimArticle = $_GET['modify'] - 1;
 
-?>    
-            <div class="form-floating">
-                <textarea class="form-control"><?php echo $articles[$aimArticle]['titre'] ?></textarea>
-                <textarea class="form-control"><?php echo $articles[$aimArticle]['contenu'] ?></textarea>
-            </div>
-            <a href="index.php?action=editArticle&amp;modify=<?php echo $articles[$aimArticle]['id']?>&amp;titre=<?php echo $articles[$aimArticle]['titre'] ?>&amp;contenu=<?php echo $articles[$aimArticle]['contenu']?> ">Modifiez cet article</a>
-        </div>
-    </div>
+?>   
+        <form action="#" method="GET" class="card" style="width: 20rem;">
+            <input type="hidden" name="action" value="editArticle">
+            <input type="hidden" name="idArticle" value="<?= $articles[$aimArticle]['id'] ?>">
+            <textarea placeholder="titre" name="titreArticle"><?= $articles[$aimArticle]['titre'] ?></textarea>
+            <textarea placeholder="contenu" name="contenuArticle"><?= $articles[$aimArticle]['contenu'] ?></textarea>
+            <input type="submit" ?>
+        </form>
+
 <?php 
 
 

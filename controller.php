@@ -120,10 +120,14 @@ function ModifyarticleView($art)
 
 function Modifyarticle($art)
 {
-   
     $articles = $art->read();
-    $art->modify($_GET['titre'], $_GET['contenu'],$_GET['modify']);
-
+    $art->modify($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle']);
+    if(isset($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle'])){
+        echo "article modifié !";
+            header( "refresh:1;url=index.php?action=reading&read=".$_GET['idArticle']);
+    } else {
+        echo "article non modifié, réessayez !";
+    }
 }
 
 
