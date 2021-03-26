@@ -1,45 +1,47 @@
 <?php
-require_once('model/manager.php');
+require_once('model/Manager.php');
 require_once('model/Article_Manager.php');
 require_once('model/Administrator_Manager.php');
 require_once('model/Comment_Manager.php');
 
+$art = new Article_Manager();
+$administrator = new Administrator_Manager();
+$comment = new Comment_Manager();
 
 
-
-function writeArticle($newArticle)
+function writeArticle($art)
 {
     if (isset($_POST['titre']) && isset($_POST['contenu']) && !empty($_POST['titre']) && !empty($_POST['contenu'])){
-        $newArticle->new_article($_POST['titre'], $_POST['contenu']);
+        $art->new_article($_POST['titre'], $_POST['contenu']);
         echo "votre article a bien été envoyé";
     } else {
         "erreur l'article n'a pas été envoyé";
     }
 }
 
-function writeComment($newComment)
+function writeComment($comment)
 {
     if (isset($_POST['pseudo']) && isset($_POST['content']) && !empty($_POST['pseudo']) && !empty($_POST['content'])){
-        $newComment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
+        $comment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
         echo "votre commentaire a bien été envoyé !";
     } else {
         "erreur le commentaire n'a pas été envoyé !";
     };   
 }
 
-function commentsList($newComment)
+function commentsList($comment)
 {
-    $comments = $newComment->read();
+    $comments = $comment->read();
     $comment_arr_length = count($comments);
     require('view\viewCommentsList.php');
 }
 
-function WarningComments($newComment)
+function WarningComments($comment)
 {
-   $warnings = $newComment->readWarning();
+   $warnings = $comment->readWarning();
    $warning_arr_length = count($warnings);
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['comment'])){
-        $newComment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['read'],$_GET['date'] );
+        $comment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['read'],$_GET['date'] );
         echo "message signalé à la modération";
         header( "refresh:2;url=index.php");
    }else{
@@ -47,13 +49,13 @@ function WarningComments($newComment)
    }    
 }
 
-function deleteCommentbutton($newComment)
+function deleteCommentbutton($comment)
 {
-    $warnings = $newComment->readWarning();
+    $warnings = $comment->readWarning();
     $warning_arr_length = count($warnings);
     if(isset($_GET['action']) && isset($_GET['idCom']) && $_GET['action'] === "delete"){
-        $newComment->deleteComment($_GET['idCom']);
-        $newComment->deleteCommentWarning($_GET['idCom']);
+        $comment->deleteComment($_GET['idCom']);
+        $comment->deleteCommentWarning($_GET['idCom']);
         echo "commentaire supprimé";
         header( "refresh:2;url=index.php?action=admin");
         } else {
@@ -61,11 +63,11 @@ function deleteCommentbutton($newComment)
     }
 }
 
-function validateCommentButton($newComment){
-    $warnings = $newComment->readWarning();
+function validateCommentButton($comment){
+    $warnings = $comment->readWarning();
     $warning_arr_length = count($warnings);
     if(isset($_GET['action']) && isset($_GET['idCom']) && $_GET['action'] === "accept"){
-        $newComment->deleteCommentWarning($_GET['idCom']);
+        $comment->deleteCommentWarning($_GET['idCom']);
         echo "commentaire validé";
         header( "refresh:2;url=index.php?action=admin");
         } else {
@@ -73,24 +75,24 @@ function validateCommentButton($newComment){
     }
 }
 
-function home($newArticle)
+function home($art)
 {
-    $articles = $newArticle->read();
+    $articles = $art->read();
     $lastsArticles = array_reverse($articles);
     require('view/viewAccueil.php');
 }
 
-function administrator($owner,$newComment)
+function administrator($administrator, $comment)
 {
-    $admin = $owner->admin();
-    $warnings = $newComment->readWarning();
+    $admin = $administrator->admin();
+    $warnings = $comment->readWarning();
     $warning_arr_length = count($warnings);
     require('view/viewPageAdministrator.php');
 }
 
-function articlesList($newArticle)
+function articlesList($art)
 {
-    $articles = $newArticle->read();
+    $articles = $art->read();
     $arr_length =  count($articles);
     $lastsArticles = array_reverse($articles);
     require('view\viewArticlesList.php');
@@ -101,26 +103,26 @@ function logout()
     require('view\viewLogout.php');
 }
 
-function article($newArticle)
+function article($art)
 {
-    $articles = $newArticle->read();
+    $articles = $art->read();
    // $lastsArticles = array_reverse($articles);
     require('view\viewArticle.php');
 }
 
-function ModifyarticleView($newArticle)
+function ModifyarticleView($art)
 {
    
-    $articles = $newArticle->read();
+    $articles = $art->read();
     require('view\viewModifyArticle.php');
 
 }
 
-function Modifyarticle($newArticle)
+function Modifyarticle($art)
 {
    
-    $articles = $newArticle->read();
-    $newArticle->modify($_GET['titre'], $_GET['contenu'],$_GET['modify']);
+    $articles = $art->read();
+    $art->modify($_GET['titre'], $_GET['contenu'],$_GET['modify']);
 
 }
 

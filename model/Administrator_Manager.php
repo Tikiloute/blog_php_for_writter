@@ -1,17 +1,12 @@
 <?php 
-require_once('model/Article_Manager.php');
 
-class Administrator_Manager extends Article_Manager
+class Administrator_Manager extends Manager
 {   
-    public $db;
 
-    public function admin()//: ?array
+    public function admin()
     {
         $req = $this->db->query('SELECT identifiant, password from administrateur');
-        // $admin = $req->fetch();
-        // if($admin === false){
-        //     $admin = null;
-        // }
+        
 
         return $req->fetch();
     }

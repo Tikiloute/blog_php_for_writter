@@ -1,8 +1,6 @@
 <?php 
 
-
-
-class Comment_Manager extends Article_Manager //exteneds manager
+class Comment_Manager extends Manager
 {   
 
     public function newCommentary($id, $comment, $idArticle): void

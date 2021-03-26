@@ -1,59 +1,59 @@
 <?php 
-require_once('controller.php');
+require('controller.php');
 
-$art = new Article_Manager();
-$administrator = new Administrator_Manager();//AdmMana
-$comment = new Comment_Manager();
-$manager = new Manager();
+if(isset($_GET["action"])){
 
+    switch($_GET["action"]){
+        case 'admin':
+            administrator($administrator, $comment);
+            writeArticle($art);
+            break;
 
-if(isset($_GET["action"]) && $_GET["action"] ==='admin'){
+        case 'articles':
+            articlesList($art);
+            break;
 
-    administrator($administrator, $comment);
-    writeArticle($art);
+        case 'logout':
+            logout();
+            break;
 
-} elseif(isset($_GET["action"]) && $_GET["action"] ==='articles'){
+        case 'accept':
+            validateCommentButton($comment);
+            break;
 
-    articlesList($art);
+        case 'delete':
+            deleteCommentbutton($comment);
+            break;
 
-} elseif(isset($_GET["id"], $_GET["comment"])){
-    WarningComments($comment);
+        case 'accept':
+            validateCommentButton($comment);
+            break;
 
-} elseif(isset($_GET["action"]) && $_GET["action"] ==='logout'){
+        case 'reading':
+            article($art);
+            writeComment($comment);
+            commentsList($comment);
+            break;
 
-    logout();
+        case 'edit':
+            ModifyarticleView($art);
+            break;
 
-}  elseif(isset($_GET["read"])){//index.php?action=read&read=id
+        case 'editArticle':
+            Modifyarticle($art);
+            break;
 
-    article($art);
-    writeComment($comment);
-    commentsList($comment);
+        case 'undefined':
+            home($art);
+            break;
 
-} elseif(isset($_GET['action']) && $_GET['action'] === "delete" && isset($_GET['idCom'])){
-
-    deleteCommentbutton($comment);
-
-} elseif(isset($_GET['action']) && $_GET['action'] === "accept" && isset($_GET['idCom'])){
-
-    validateCommentButton($comment);
-
-} elseif(isset($_GET['modify'])){
-    
-    ModifyarticleView($art);
-
-    if(isset($_GET['titre']) && isset($_GET['contenu']) && isset($_GET['modify'])){
-
-    Modifyarticle($art);
+        default : home($art);
     }
 
-}else {
+} else {
 
     home($art);
-
 }
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 
 <?php 
+
 if(isset($_POST['id']) && isset($_POST['pswd'])){
 
     $username = $_POST['id'];
@@ -55,6 +56,8 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
         
         <?php
         
+        } else {
+            echo "veuillez vous reconnecter";
         }
     
 } 

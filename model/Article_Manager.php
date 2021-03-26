@@ -2,17 +2,7 @@
 
 class Article_Manager extends Manager
 {
-    public $db;
 
-    public function __construct()
-    {
-        try {
-            $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
-        } catch(PDOException $e) {
-            print "erreur".$e->getMessage();
-            die();
-        }
-    }
 
     public function new_article(string $title, string $content): void 
     {
@@ -24,15 +14,22 @@ class Article_Manager extends Manager
         $this->db->exec("INSERT INTO article(titre, contenu) VALUES('$title', '$content')");
     }
 
-    public function read(): array
+    public function read()
     {
-        $articles = $this->db->query('SELECT * from article');
-        return $articles->fetchAll();  
+        $stm = $this->db->prepare('SELECT * from article');
+        $stm->execute();
+        $articles = $stm->fetchAll();
+        return $articles;
+        // $articles = $this->db->query('SELECT * from article');
+        // return $articles->fetchAll();  
     }
 
-    public function modify($titre, $contenu, $id): void
+    public function modify($titre, $contenu, $id)
     {   
-        $this->db->exec("UPDATE article SET titre='$titre', contenu='$contenu' WHERE id='$id'");
+       // $this->db->exec("UPDATE article SET titre='$titre', contenu='$contenu' WHERE id='$id'");
+        $stm = $this->db->prepare("UPDATE article SET titre=?, contenu=? WHERE id=?");
+        $stm->bind_param('ssi', $titre, $contenu, $id);
+        $stm->execute();
     }
 
 

@@ -1,7 +1,6 @@
 <?php 
 require_once('view/viewLastsArticles.php');
 $title = "Accueil";
-
 ob_start();
 ?>
     <h1>Blog de monsieur Jean Forteroche</h1>

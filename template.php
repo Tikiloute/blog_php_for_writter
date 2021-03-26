@@ -27,7 +27,7 @@
                     <a class="nav-link" href="index.php?action=articles">Articles</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=admin">Vous connecter</a>
+                    <a class="nav-link" href="index.php?action=admin">Se connecter</a>
                     </li>
                 </ul>
             </div>

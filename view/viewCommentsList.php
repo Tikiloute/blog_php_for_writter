@@ -7,7 +7,7 @@
                         <h5 class="card-title"><?php echo $comments[$i]['identifiant'] ?></h5>
                         <p class="card-text"><?php echo "a dit : ".$comments[$i]['commentaire'] ?></p>
                         <p class="card-text"><?php echo $comments[$i]['date']?></p>
-                        <a href="index.php?read=<?php echo $comments[$i]['id']?>&amp;id=<?php echo $comments[$i]['identifiant'] ?>&amp;comment=<?php echo $comments[$i]['commentaire'] ?>&amp;date=<?php echo $comments[$i]['date']?> " >Signalez ce commentaire</a>
+                        <a href="index.php?action=reading&amp;read=<?php echo $comments[$i]['id']?>&amp;id=<?php echo $comments[$i]['identifiant'] ?>&amp;comment=<?php echo $comments[$i]['commentaire'] ?>&amp;date=<?php echo $comments[$i]['date']?> " >Signalez ce commentaire</a>
                     </div>
                 </div>
 <?php 
