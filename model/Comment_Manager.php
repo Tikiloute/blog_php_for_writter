@@ -1,45 +1,69 @@
 <?php 
 
+
 class Comment_Manager extends Manager
 {   
 
     public function newCommentary($id, $comment, $idArticle): void
     {
-        if (empty($id) || empty($comment) ) 
-        { 
-            echo "il manque votre pseudo et / ou le contenu du commentaire";
-            return;
-        }
-        $this->db->exec("INSERT INTO commentaire(identifiant, commentaire, idArticle, date) VALUES('$id', '$comment', '$idArticle', NOW())");
-        header('location: index.php?read='.$_GET["read"]);
+
+        $stm = $this->db->prepare("INSERT INTO commentaire(identifiant, commentaire, idArticle, date) VALUES(:id, :comment, :idArticle, NOW())");
+        $stm->bindParam(":id", $id);
+        $stm->bindParam(":comment", $comment);
+        $stm->bindParam(":idArticle", $idArticle);
+        $stm->execute();
+        header('location: index.php?action=reading&read='.$_GET["read"]);
+
     }
 
     public function read(): array
     {
-        $comments = $this->db->query('SELECT * from commentaire');
-        return $comments->fetchAll();  
-    }
 
+        $stm = $this->db->prepare('SELECT * from commentaire');
+        $stm->execute();
+        $comments = $stm->fetchAll();
+        return $comments; 
+  
+    }
 
     public function newCommentaryWarning($id, $comment, $idComment, $date): void
     {
-        $this->db->exec("INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES('$id', '$comment', '$idComment', '$date')");
+
+        $stm = $this->db->prepare("INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES( :id, :comment, :idComment, :dateComment)");
+        $stm->bindParam(":id", $id);
+        $stm->bindParam(":comment", $comment);
+        $stm->bindParam(":idComment", $idComment);
+        $stm->bindParam(":dateComment", $date);
+        $stm->execute();
+
     }
 
     public function readWarning(): array
     {
-        $commentsWarning = $this->db->query('SELECT * from commentaire_moderation ');
-        return $commentsWarning->fetchAll();  
+
+        $stm = $this->db->prepare('SELECT * from commentaire_moderation');
+        $stm->execute();
+        $commentsWarning = $stm->fetchAll();
+        return $commentsWarning; 
+ 
     }
 
     public function deleteComment($idWarningComment): void
     {
-        $this->db->exec("DELETE FROM commentaire WHERE id = $idWarningComment");
+
+        $stm = $this->db->prepare("DELETE FROM commentaire WHERE id = :id");
+        $stm->bindParam(":id", $idWarningComment);
+        $stm->execute();
+
     }
 
     public function deleteCommentWarning($idWarningComment): void
     {
-        $this->db->exec("DELETE FROM commentaire_moderation WHERE idCommentaire = $idWarningComment");
+
+        $stm = $this->db->prepare("DELETE FROM commentaire_moderation WHERE idCommentaire = :id");
+        $stm->bindParam(":id", $idWarningComment);
+        $stm->execute();
+
     }
 
 }

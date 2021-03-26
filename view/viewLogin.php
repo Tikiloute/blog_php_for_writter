@@ -23,12 +23,9 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
     <?php
 
         echo "Vous êtes connecté";
+        header('location: index.php?action=admin');
         echo $createArticle;
         require('view\viewWarningcomments.php');
-    ?>
-        <a class="nav-link" href="index.php?action=logout">Vous déconnecter</a>
-
-    <?php
 
     } else {
 
@@ -51,10 +48,6 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
             echo "Vous êtes connecté";
             echo $createArticle;
             require('view\viewWarningcomments.php');
-        ?>
-            <a class="nav-link" href="index.php?action=logout">Vous déconnecter</a>
-        
-        <?php
         
         } else {
             echo "veuillez vous reconnecter";

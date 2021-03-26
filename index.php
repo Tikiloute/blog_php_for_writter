@@ -10,6 +10,7 @@ if(isset($_GET["action"])){
             break;
 
         case 'articles':
+            session_start();
             articlesList($art);
             break;
 
@@ -30,29 +31,33 @@ if(isset($_GET["action"])){
             break;
 
         case 'reading':
+            session_start();
             article($art);
             writeComment($comment);
             commentsList($comment);
             break;
 
+        case 'warning':
+            WarningComments($comment);
+            break;
+
         case 'edit':
+            session_start();
             ModifyarticleView($art);
             break;
 
         case 'editArticle':
+            session_start();
             Modifyarticle($art);
-            break;
-
-        case 'undefined':
-            home($art);
             break;
 
         default : home($art);
     }
 
 } else {
-
+    session_start();
     home($art);
+    print_r($_SESSION["identify"]);
 }
 
 

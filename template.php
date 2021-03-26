@@ -27,7 +27,15 @@
                     <a class="nav-link" href="index.php?action=articles">Articles</a>
                     </li>
                     <li class="nav-item">
+                <?php if(isset($_SESSION["identify"],$_SESSION["identify"])){ ?>
+                    <a class="nav-link" href="index.php?action=admin">Gérer votre site</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=logout">Se déconnecter</a>
+                    </li>
+                <?php } else { ?>
                     <a class="nav-link" href="index.php?action=admin">Se connecter</a>
+                <?php } ?>
                     </li>
                 </ul>
             </div>
