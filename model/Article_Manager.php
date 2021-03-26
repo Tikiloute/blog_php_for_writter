@@ -6,27 +6,22 @@ class Article_Manager extends Manager
 
     public function new_article(string $title, string $content): void 
     {
-        if (empty($title) or empty($content)) 
-        { 
-            echo "il manque le titre et / ou le contenu";
-            return;
-        }
-        $this->db->exec("INSERT INTO article(titre, contenu) VALUES('$title', '$content')");
+        $stm = $this->db->prepare("INSERT INTO article(titre, contenu) VALUES(:title, :content)");
+        $stm->bindParam(":title", $title);
+        $stm->bindParam(":content", $content);
+        $stm->execute();
     }
 
-    public function read()
+    public function read(): array
     {
         $stm = $this->db->prepare('SELECT * from article');
         $stm->execute();
         $articles = $stm->fetchAll();
-        return $articles;
-        // $articles = $this->db->query('SELECT * from article');
-        // return $articles->fetchAll();  
+        return $articles; 
     }
 
-    public function modify($titre, $contenu, $id)
+    public function modify($titre, $contenu, $id): void
     {   
-       // $this->db->exec("UPDATE article SET titre='$titre', contenu='$contenu' WHERE id='$id'");
         $stm = $this->db->prepare("UPDATE article SET titre= :title, contenu= :content WHERE id= :id");
         $stm->bindParam(":title", $titre);
         $stm->bindParam(":content", $contenu);
