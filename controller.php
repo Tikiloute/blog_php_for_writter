@@ -26,29 +26,29 @@ function writeArticle($art)
 function home($art)
 {
     $articles = $art->read();
-    $lastsArticles = array_reverse($articles);
+    $articlesReverse = $art->readReverse();
     require('view/viewAccueil.php');
 }
 
 function articlesList($art)
 {
     $articles = $art->read();
+    $articlesReverse = $art->readReverse();
     $arr_length =  count($articles);
-    $lastsArticles = array_reverse($articles);
     require('view\viewArticlesList.php');
 }
 
 function article($art)
 {
     $articles = $art->read();
-    $lastsArticles = array_reverse($articles);
+    $articlesReverse = $art->readReverse();
     require('view\viewArticle.php');
 }
 
 function ModifyarticleView($art)
 {
-   
-    $articles = $art->read();
+    
+    $articlesReverse = $art->readReverse();
     require('view\viewModifyArticle.php');
 
 }
@@ -93,7 +93,7 @@ function WarningComments($comment)
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['comment'])){
         $comment->newCommentaryWarning($_GET['id'], $_GET['comment'],$_GET['idCommentaire'],$_GET['date'] );
         echo "message signalé à la modération";
-        header( "refresh:2;url=index.php?action=reading&read=".$_GET['read']);
+        header( "refresh:1;url=index.php?action=reading&read=".$_GET['read']);
    }else{
         "erreur";
    }    
@@ -108,7 +108,7 @@ function deleteCommentbutton($comment)
         $comment->deleteCommentWarning($_GET['idCom']);
         echo "commentaire supprimé";
         header( "refresh:1;url=index.php?action=admin");
-        } else {
+    } else {
             echo "erreur le commentaire n'est pas supprimé";
     }
 }

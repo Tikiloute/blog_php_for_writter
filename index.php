@@ -57,7 +57,6 @@ if(isset($_GET["action"])){
 } else {
     session_start();
     home($art);
-    print_r($_SESSION["identify"]);
 }
 
 

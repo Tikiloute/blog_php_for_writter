@@ -20,6 +20,14 @@ class Article_Manager extends Manager
         return $articles; 
     }
 
+    public function readReverse(): array
+    {
+        $stm = $this->db->prepare('SELECT * from article ORDER BY id DESC');
+        $stm->execute();
+        $articles = $stm->fetchAll();
+        return $articles; 
+    }
+
     public function modify($titre, $contenu, $id): void
     {   
         $stm = $this->db->prepare("UPDATE article SET titre= :title, contenu= :content WHERE id= :id");
