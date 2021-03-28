@@ -1,12 +1,12 @@
 <?php
 require_once('model/Manager.php');
-require_once('model/Article_Manager.php');
-require_once('model/Administrator_Manager.php');
-require_once('model/Comment_Manager.php');
+require_once('model/ArticleManager.php');
+require_once('model/AdministratorManager.php');
+require_once('model/CommentManager.php');
 
-$art = new Article_Manager();
-$administrator = new Administrator_Manager();
-$comment = new Comment_Manager();
+$art = new ArticleManager();
+$administrator = new AdministratorManager();
+$comment = new CommentManager();
 
 
 
@@ -32,14 +32,20 @@ function home($art)
 
 function articlesList($art)
 {
+    //$paging = $art->paging();
+    $articlePaging = $art->paging();
+    $count = $art->countArticles();
+    $round = $art->round();
     $articles = $art->read();
     $articlesReverse = $art->readReverse();
     $arr_length =  count($articles);
-    require('view\viewArticlesList.php');
+    //require('view\viewArticlesList.php');
+    require('view\viewPaging.php');
 }
 
 function article($art)
 {
+    $articlePaging = $art->paging();
     $articles = $art->read();
     $articlesReverse = $art->readReverse();
     require('view\viewArticle.php');
@@ -47,7 +53,7 @@ function article($art)
 
 function ModifyarticleView($art)
 {
-    
+
     $articlesReverse = $art->readReverse();
     require('view\viewModifyArticle.php');
 
@@ -56,10 +62,11 @@ function ModifyarticleView($art)
 function Modifyarticle($art)
 {
     $articles = $art->read();
+    $articlesReverse = $art->readReverse();
     $art->modify($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle']);
     if(isset($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle'])){
         echo "article modifié !";
-            header( "refresh:1;url=index.php?action=reading&read=".$_GET['idArticle']);
+        header( "refresh:1;url=index.php?action=articles");
     } else {
         echo "article non modifié, réessayez !";
     }

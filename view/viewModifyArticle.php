@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-$aimArticle = $_GET['modify'] - 1;
+$aimArticle = $_GET['modify'] -1;
 
 ?>   
         <form action="#" method="GET" class="card" style="width: 20rem;">

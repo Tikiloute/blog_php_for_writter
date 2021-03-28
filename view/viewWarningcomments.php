@@ -1,6 +1,5 @@
 <?php 
-        for($i = 0; $i < $warning_arr_length ; $i++){
-           
+        for($i = 0; $i < $warning_arr_length ; $i++){       
 ?>    
                 <div class="card ">
                     <div class="card-body">

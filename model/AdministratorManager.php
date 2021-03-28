@@ -1,6 +1,6 @@
 <?php 
 
-class Administrator_Manager extends Manager
+class AdministratorManager extends Manager
 {   
 
     public function admin()
