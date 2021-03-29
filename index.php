@@ -34,11 +34,11 @@ if(isset($_GET["action"])){
             session_start();
             article($art);
             writeComment($comment);
-            commentsList($comment);
+            commentsList($art, $comment);
             break;
 
         case 'warning':
-            WarningComments($comment);
+            WarningComments($art, $comment);
             break;
 
         case 'edit':

@@ -32,26 +32,31 @@ function home($art)
 
 function articlesList($art)
 {   
-    $limit = 6;
+    if(isset($_GET['page']) && $_GET['page'] < 1){
+        $_GET['page']=1;
+    };
+    $limit = 3;
     $countArray = $art->countArticles();
     $count = $countArray[0];
     $round = $art->round($limit);
-    print_r($round);
     $articles = $art->read();
+    if(isset($_GET['page']) && $_GET['page'] > $round ){
+        $_GET['page']=$round;
+    };
     if(isset($_GET['page']) && $_GET['page']===1){
         $offset = ($_GET['page']-1);
     }else{
         $offset = ($_GET['page']-1)*$limit;
     };
+    
     $articlePaging = $art->paging($limit, $offset);
+
     require('view\viewPaging.php');
 }
 
 function article($art)
 {
-    $limit = 6;
     $articles = $art->read();
-    $round = $art->round($limit);
     require('view\viewArticle.php');
 }
 
@@ -70,7 +75,7 @@ function Modifyarticle($art)
     $art->modify($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle']);
     if(isset($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle'])){
         echo "article modifié !";
-        header( "refresh:1;url=index.php?action=articles");
+        header( "refresh:1;url=index.php");
     } else {
         echo "article non modifié, réessayez !";
     }
@@ -90,8 +95,9 @@ function writeComment($comment)
     };   
 }
 
-function commentsList($comment)
+function commentsList($art, $comment)
 {
+    $articles = $art->read();
     $comments = $comment->read();
     $comment_arr_length = count($comments);
     require('view\viewCommentsList.php');
@@ -107,7 +113,8 @@ function WarningComments($comment)
         header( "refresh:1;url=index.php?action=reading&read=".$_GET['read']);
    }else{
         "erreur";
-   }    
+   }
+
 }
 
 function deleteCommentbutton($comment)

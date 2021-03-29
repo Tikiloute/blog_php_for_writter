@@ -1,4 +1,5 @@
 <?php 
+        $aim = $_GET['read'];
         for($i = 0; $i < $comment_arr_length ; $i++){
            if(isset($_GET["read"]) && $_GET["read"] === $comments[$i]['idArticle']){
 ?>    

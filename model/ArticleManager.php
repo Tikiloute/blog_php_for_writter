@@ -30,7 +30,7 @@ class ArticleManager extends Manager
 
     public function paging($limit,$offset): array
     {
-        $stm = $this->db->prepare("SELECT * FROM `article` ORDER BY `id` DESC LIMIT :limit OFFSET :offset");
+        $stm = $this->db->prepare('SELECT * FROM article ORDER BY id DESC LIMIT :limit OFFSET :offset');
         $stm->bindParam(":offset", $offset,PDO::PARAM_INT);
         $stm->bindParam(":limit", $limit,PDO::PARAM_INT);
         $stm->execute();
