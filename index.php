@@ -38,7 +38,7 @@ if(isset($_GET["action"])){
             break;
 
         case 'warning':
-            WarningComments($art, $comment);
+            WarningComments($comment);
             break;
 
         case 'edit':

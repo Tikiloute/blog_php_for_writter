@@ -19,7 +19,7 @@ class CommentManager extends Manager
     public function read(): array
     {
 
-        $stm = $this->db->prepare('SELECT * from commentaire');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idArticle, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date  from commentaire');
         $stm->execute();
         $comments = $stm->fetchAll();
         return $comments; 
@@ -41,7 +41,7 @@ class CommentManager extends Manager
     public function readWarning(): array
     {
 
-        $stm = $this->db->prepare('SELECT * from commentaire_moderation');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idCommentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date from commentaire_moderation');
         $stm->execute();
         $commentsWarning = $stm->fetchAll();
         return $commentsWarning; 
