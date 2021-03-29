@@ -24,7 +24,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=articles">Articles</a>
+                    <a class="nav-link" href="index.php?action=articles&amp;page=1">Articles</a>
                     </li>
                     <li class="nav-item">
                 <?php if(isset($_SESSION["identify"],$_SESSION["identify"])){ ?>

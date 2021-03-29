@@ -28,9 +28,11 @@ class ArticleManager extends Manager
         return $articles; 
     }
 
-    public function paging(): array
+    public function paging($limit,$offset): array
     {
-        $stm = $this->db->prepare('SELECT * from article ORDER BY id DESC LIMIT 10 OFFSET 1 ');
+        $stm = $this->db->prepare("SELECT * FROM `article` ORDER BY `id` DESC LIMIT :limit OFFSET :offset");
+        $stm->bindParam(":offset", $offset,PDO::PARAM_INT);
+        $stm->bindParam(":limit", $limit,PDO::PARAM_INT);
         $stm->execute();
         $ArticlesPaging = $stm->fetchAll();
         return $ArticlesPaging; 
@@ -45,10 +47,10 @@ class ArticleManager extends Manager
 
     }
 
-    public function round(): int
+    public function round($numberArticlesPerPage): int
     {
         $count = $this->countArticles();
-        $numberArtPerPage = 10;
+        $numberArtPerPage = $numberArticlesPerPage;
         return ceil($count[0]/$numberArtPerPage); 
     }
 

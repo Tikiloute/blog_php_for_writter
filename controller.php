@@ -31,30 +31,34 @@ function home($art)
 }
 
 function articlesList($art)
-{
-    //$paging = $art->paging();
-    $articlePaging = $art->paging();
-    $count = $art->countArticles();
-    $round = $art->round();
+{   
+    $limit = 6;
+    $countArray = $art->countArticles();
+    $count = $countArray[0];
+    $round = $art->round($limit);
+    print_r($round);
     $articles = $art->read();
-    $articlesReverse = $art->readReverse();
-    $arr_length =  count($articles);
-    //require('view\viewArticlesList.php');
+    if(isset($_GET['page']) && $_GET['page']===1){
+        $offset = ($_GET['page']-1);
+    }else{
+        $offset = ($_GET['page']-1)*$limit;
+    };
+    $articlePaging = $art->paging($limit, $offset);
     require('view\viewPaging.php');
 }
 
 function article($art)
 {
-    $articlePaging = $art->paging();
+    $limit = 6;
     $articles = $art->read();
-    $articlesReverse = $art->readReverse();
+    $round = $art->round($limit);
     require('view\viewArticle.php');
 }
 
 function ModifyarticleView($art)
 {
 
-    $articlesReverse = $art->readReverse();
+    $articles = $art->read();
     require('view\viewModifyArticle.php');
 
 }
