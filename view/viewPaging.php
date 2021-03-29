@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-for ($i = 0; $i < $round; $i++){
+for ($i = 0; $i < $count; $i++){
     if(isset($articlePaging[$i])){
 ?>
                 <div class="card ">

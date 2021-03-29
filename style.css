@@ -1,6 +1,8 @@
+
 body{
     width: 100% ;
     margin: auto;
+    background: linear-gradient(to right, #57a2d4, #6DD5FA, #FFFFFF);
 }
 
 h1{
@@ -22,10 +24,16 @@ p{
 }
 
 .card{
+    width: 100%;
     margin-top: 1vh;
     margin-bottom: 1vh;
     margin-left: auto;
     margin-right: auto;
+}
+
+.card-body{
+    width: 100%;
+    margin :0 !important;
 }
 
 .write-article{
