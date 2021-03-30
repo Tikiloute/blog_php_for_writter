@@ -1,6 +1,7 @@
 
 <?php
 $page =  $_GET['page'];
+if(isset($_GET['page']) && $round >1){
 
 ?>
 <nav aria-label="Page navigation example">
@@ -16,3 +17,7 @@ $page =  $_GET['page'];
     <li class="page-item"><a class="page-link" href="index.php?action=articles&amp;page=<?php echo $page+1?>">suivant</a></li>
   </ul>
 </nav>
+
+<?php
+}
+?>
