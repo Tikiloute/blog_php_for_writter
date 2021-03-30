@@ -64,6 +64,4 @@ class ArticleManager extends Manager
         $stm->execute();
     }
 
-    
-
 }
