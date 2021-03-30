@@ -1,6 +1,5 @@
 <?php  
     ob_start();
-    //mise en place des 3 derniers articles écrits-----------------------------------------        
         for($i = 0; $i < $count ; $i++){
             if(!empty($articlesReverse[$i]['titre'])){
     ?>    

@@ -36,7 +36,7 @@ function articlesList($art)
     if(isset($_GET['page']) && $_GET['page'] < 1){
         $_GET['page']=1;
     };
-    $limit=5;
+    $limit=6;
     $countArray = $art->countArticles();
     $count = $countArray[0];
     $round = $art->round($limit);
@@ -44,7 +44,7 @@ function articlesList($art)
     if(isset($_GET['page']) && $_GET['page'] > $round ){
         $_GET['page']=$round;
     };
-    if(isset($_GET['page']) && $_GET['page']=1){
+    if(isset($_GET['page']) && $_GET['page']===1){
         $offset = ($_GET['page']-1);
     }else{
         $offset = ($_GET['page']-1)*$limit;
