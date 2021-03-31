@@ -15,11 +15,9 @@ $comment = new CommentManager();
  */
 function writeArticle($art)
 {
-    if (isset($_POST['titre']) && isset($_POST['contenu']) && !empty($_POST['titre']) && !empty($_POST['contenu'])){
+    if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
         $art->new_article($_POST['titre'], $_POST['contenu']);
         echo "votre article a bien été envoyé";
-    } else {
-        "erreur l'article n'a pas été envoyé";
     }
 }
 
@@ -169,9 +167,3 @@ function logout()
 {
     require('view\viewLogout.php');
 }
-
-
-
-
-
-    
