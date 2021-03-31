@@ -49,9 +49,7 @@ function articlesList($art)
     }else{
         $offset = ($_GET['page']-1)*$limit;
     };
-    
     $articlePaging = $art->paging($limit, $offset);
-
     require('view\viewPaging.php');
 }
 
@@ -63,10 +61,8 @@ function article($art)
 
 function ModifyarticleView($art)
 {
-
     $articles = $art->read();
     require('view\viewModifyArticle.php');
-
 }
 
 function Modifyarticle($art)
@@ -98,13 +94,13 @@ function writeComment($comment)
 
 function commentsList($art, $comment)
 {
+    $articles = $art->read();
     $limitC = 5;
     if(isset($_GET['read'])){
         $countArrayC = $comment->countComment($_GET['read']);
     };
     $countC = $countArrayC[0];
     $roundC = $comment->round($limitC,$_GET['read']);
-    print_r($roundC);
     if(isset($_GET['comment']) && $_GET['comment']===1){
         $offset = ($_GET['comment']-1);
     } elseif(isset($_GET['comment'])){
@@ -113,16 +109,16 @@ function commentsList($art, $comment)
         $offset = ($_GET['comment']-1)*$limitC;
     }
     $commentsPaging = $comment->paging($limitC, $offset, $_GET['read']);
-    print_r($commentsPaging);
     require('view\viewPagingComments.php');
 }
 
-function WarningComments($comment)
+function WarningComments($comment, $art)
 {
+   $articles = $art->read();
    $warnings = $comment->readWarning();
    $warning_arr_length = count($warnings);
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['commentaire'])){
-        $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'] );
+        $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'], $_GET['nomArticle'], $_GET['nomArticle'] );
         echo "message signalé à la modération";
         header( "refresh:1;url=index.php?action=reading&read=".$_GET['read']."&comment=".$_GET['comment']);
    }else{

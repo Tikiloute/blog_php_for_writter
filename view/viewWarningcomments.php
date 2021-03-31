@@ -6,6 +6,7 @@
                         <h5 class="card-title"><?php echo $warnings[$i]['identifiant'] ?></h5>
                         <p class="card-text"><?php echo "A dit : ".$warnings[$i]['commentaire'] ?></p>
                         <p class="card-text"><?php echo "Le : ".$warnings[$i]['date']?></p>
+                        <p class="card-text"><?php echo "A propos de l'article : ".$warnings[$i]['NomArticle']?></p>
                         <!-- <p class="card-text">mettre l'article concerné par le signalement</p> -->
                         <a href="index.php?action=delete&amp;idCom=<?php echo $warnings[$i]['idCommentaire']?>" >Supprimez ce commentaire</a>
                         <a href="index.php?action=accept&amp;idCom=<?php echo $warnings[$i]['idCommentaire']?>" >Commentaire valide</a>

@@ -18,34 +18,29 @@ class CommentManager extends Manager
 
     public function read(): array
     {
-
         $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idArticle, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date  from commentaire');
         $stm->execute();
         $comments = $stm->fetchAll();
         return $comments; 
-  
     }
 
-    public function newCommentaryWarning($id, $comment, $idComment, $date): void
+    public function newCommentaryWarning($id, $comment, $idComment, $date, $nomArticle): void
     {
-
-        $stm = $this->db->prepare('INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date) VALUES( :id, :comment, :idComment, :dateComment)');
+        $stm = $this->db->prepare('INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date, NomArticle) VALUES( :id, :comment, :idComment, :dateComment, :nomArticle)');
         $stm->bindParam(":id", $id);
         $stm->bindParam(":comment", $comment);
         $stm->bindParam(":idComment", $idComment);
         $stm->bindParam(":dateComment", $date);
+        $stm->bindParam(":nomArticle", $nomArticle);
         $stm->execute();
-
     }
 
     public function readWarning(): array
     {
-
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idCommentaire, date from commentaire_moderation');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idCommentaire, date, NomArticle from commentaire_moderation');
         $stm->execute();
         $commentsWarning = $stm->fetchAll();
         return $commentsWarning; 
- 
     }
 
     public function deleteComment($idWarningComment): void
