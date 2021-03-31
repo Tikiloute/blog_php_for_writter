@@ -24,20 +24,21 @@ class CommentManager extends Manager
         return $comments; 
     }
 
-    public function newCommentaryWarning($id, $comment, $idComment, $date, $nomArticle): void
+    public function newCommentaryWarning($id, $comment, $idComment, $date, $nomArticle, $idArticle): void
     {
-        $stm = $this->db->prepare('INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date, NomArticle) VALUES( :id, :comment, :idComment, :dateComment, :nomArticle)');
+        $stm = $this->db->prepare('INSERT INTO commentaire_moderation(identifiant, commentaire, idCommentaire, date, NomArticle, idArticle) VALUES( :id, :comment, :idComment, :dateComment, :nomArticle, :idArticle)');
         $stm->bindParam(":id", $id);
         $stm->bindParam(":comment", $comment);
         $stm->bindParam(":idComment", $idComment);
         $stm->bindParam(":dateComment", $date);
         $stm->bindParam(":nomArticle", $nomArticle);
+        $stm->bindParam(":idArticle", $idArticle);
         $stm->execute();
     }
 
     public function readWarning(): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idCommentaire, date, NomArticle from commentaire_moderation');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idCommentaire, date, NomArticle, idArticle from commentaire_moderation');
         $stm->execute();
         $commentsWarning = $stm->fetchAll();
         return $commentsWarning; 

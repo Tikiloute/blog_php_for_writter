@@ -118,7 +118,7 @@ function WarningComments($comment, $art)
    $warnings = $comment->readWarning();
    $warning_arr_length = count($warnings);
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['commentaire'])){
-        $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'], $_GET['nomArticle'], $_GET['nomArticle'] );
+        $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'], $_GET['nomArticle'], $_GET['read']);
         echo "message signalé à la modération";
         header( "refresh:1;url=index.php?action=reading&read=".$_GET['read']."&comment=".$_GET['comment']);
    }else{
