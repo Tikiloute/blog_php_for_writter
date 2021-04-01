@@ -44,10 +44,6 @@ if(isset($_GET["action"])){
         case 'edit':
             session_start();
             ModifyarticleView($art);
-            break;
-
-        case 'editArticle':
-            session_start();
             Modifyarticle($art);
             break;
 

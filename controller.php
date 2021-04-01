@@ -17,7 +17,7 @@ function writeArticle($art)
 {
     if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
         $art->new_article($_POST['titre'], $_POST['contenu']);
-        echo "votre article a bien été envoyé";
+        echo "<div class='alert alert-success text-center'>Votre article a bien été envoyé</div>";
     }
 }
 
@@ -67,12 +67,9 @@ function Modifyarticle($art)
 {
     $articles = $art->read();
     $articlesReverse = $art->readReverse();
-    $art->modify($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle']);
-    if(isset($_GET['titreArticle'], $_GET['contenuArticle'], $_GET['idArticle'])){
-        echo "article modifié !";
-        header( "refresh:1;url=index.php");
-    } else {
-        echo "article non modifié, réessayez !";
+    if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle']))){
+        $art->modify($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle']);
+          echo "<div class='alert alert-success text-center'>Article modifié avec succès!<div>";
     }
 }
 
