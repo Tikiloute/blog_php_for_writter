@@ -16,7 +16,7 @@
                     <input type="password" name ="pswd" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                <input type="submit" />
+                <input type="submit" class="btn btn-primary"/>
                 </div>
             </div>
         </form>

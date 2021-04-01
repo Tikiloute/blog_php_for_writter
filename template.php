@@ -14,9 +14,9 @@
     </head>
     <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-primary bg-light mb-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 color-navBar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Blog de Jean Forteroche</a>
+            <a class="navbar-brand color-navBar" href="index.php">Blog de Jean Forteroche</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

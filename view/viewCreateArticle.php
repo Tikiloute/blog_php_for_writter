@@ -10,9 +10,9 @@
         <h2 class="write-article">Bonjour <?= $admin['identifiant'] ?></h2>
         <h3 class="write-article">Créer votre article ici</h3>
         <form action="#" method="POST" class="card" style="width: 20rem;">
-            <input type="text" placeholder="titre" name="titre" class="card-title"/>
-            <textarea id="mytextarea" placeholder="contenu" name="contenu"></textarea>
-            <input type="submit" />
+            <input type="text" placeholder="Titre" name="titre" class="card-title"/>
+            <textarea id="mytextarea" placeholder="Contenu" name="contenu"></textarea>
+            <input type="submit" class="btn btn-primary" />
         </form>
 
 <?php

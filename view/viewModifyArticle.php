@@ -1,5 +1,4 @@
 <?php 
-
 ob_start();
 $aimArticle = $_GET['modify'] -1;
 
@@ -15,8 +14,8 @@ $aimArticle = $_GET['modify'] -1;
             <input type="hidden" name="action" value="editArticle">
             <input type="hidden" name="idArticle" value="<?= $_GET['modify'] ?>">
             <textarea placeholder="titre" name="titreArticle"><?= $articles[$aimArticle]['titre'] ?></textarea>
-            <textarea id="ModifyTextArea" placeholder="contenu" name="contenuArticle"><?= $articles[$aimArticle]['contenu'] ?></textarea>
-            <input type="submit"/>
+            <textarea id="ModifyTextArea" class="form-control" placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $articles[$aimArticle]['contenu'] ?></textarea>
+            <input type="submit" class="btn btn-primary"/>
         </form>
 <?php 
 

@@ -1,6 +1,4 @@
-
 <?php 
-
 if(isset($_POST['id']) && isset($_POST['pswd'])){
 
     $username = $_POST['id'];
@@ -22,7 +20,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
 
     <?php
 
-        echo "Vous êtes connecté";
+        echo "<div class='alert alert-success text-center'>Vous êtes connecté</div>";
         header('location: index.php?action=admin');
         echo $createArticle;
         require('view\viewWarningcomments.php');
@@ -45,7 +43,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
         
         <?php
         
-            echo "Vous êtes connecté";
+        echo "<div class='alert alert-success text-center'>Vous êtes connecté</div>";
             echo $createArticle;
             require('view\viewWarningcomments.php');
         

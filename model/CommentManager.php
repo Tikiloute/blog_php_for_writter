@@ -11,9 +11,7 @@ class CommentManager extends Manager
         $stm->bindParam(":id", $id);
         $stm->bindParam(":comment", $comment);
         $stm->bindParam(":idArticle", $idArticle);
-        $stm->execute();
-        header('location: index.php?action=reading&read='.$_GET["read"].'&comment='.$_GET["comment"]);
-
+        $stm->execute();        
     }
 
     public function read(): array

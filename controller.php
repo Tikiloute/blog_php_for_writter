@@ -69,7 +69,8 @@ function Modifyarticle($art)
     $articlesReverse = $art->readReverse();
     if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle']))){
         $art->modify($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle']);
-          echo "<div class='alert alert-success text-center'>Article modifié avec succès!<div>";
+          echo "<div class='alert alert-success text-center'> Article modifié avec succès!</div>";
+        //   header('location: projet4/index.php?action=edit&modify='.$_GET["modify"]);
     }
 }
 
@@ -81,7 +82,7 @@ function writeComment($comment)
 {
     if (isset($_POST['pseudo']) && isset($_POST['content']) && !empty($_POST['pseudo']) && !empty($_POST['content'])){
         $comment->newCommentary($_POST['pseudo'], $_POST['content'], $_GET['read']);
-        echo "votre commentaire a bien été envoyé !";
+        echo "<p class='alert alert-success text-center'>votre commentaire a bien été envoyé !</p>";
     } else {
         "erreur le commentaire n'a pas été envoyé !";
     };   
@@ -114,8 +115,8 @@ function WarningComments($comment, $art)
    $warning_arr_length = count($warnings);
    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['commentaire'])){
         $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'], $_GET['nomArticle'], $_GET['read']);
-        echo "message signalé à la modération";
-        header( "refresh:1;url=index.php?action=reading&read=".$_GET['read']."&comment=".$_GET['comment']);
+       // header("location = index.php?action=reading&read=".$_GET['read']."&comment=1");
+        echo "<p class='alert alert-success text-center'>votre commentaire a bien été envoyé !</p>";
    }else{
         "erreur";
    }
@@ -131,6 +132,7 @@ function deleteCommentbutton($comment)
         $comment->deleteCommentWarning($_GET['idCom']);
         echo "commentaire supprimé";
         header( "refresh:1;url=index.php?action=admin");
+        exit();
     } else {
             echo "erreur le commentaire n'est pas supprimé";
     }
@@ -143,6 +145,7 @@ function validateCommentButton($comment){
         $comment->deleteCommentWarning($_GET['idCom']);
         echo "commentaire validé";
         header( "refresh:1;url=index.php?action=admin");
+        exit();
         } else {
         echo "erreur le commentaire n'est pas validé";
     }
