@@ -18,3 +18,4 @@ $contenu  = ob_get_clean();
 require('template.php');
 require('view\viewPagingButton.php');
 
+?>

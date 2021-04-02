@@ -12,3 +12,4 @@ $intro = ob_get_clean();
 $contenu = $intro;
 require_once('template.php');
 echo $LastsArticle;
+?>

@@ -3,6 +3,7 @@
 class ArticleManager extends Manager
 {
 
+    const LIMIT = 4;
 
     public function new_article(string $title, string $content): void 
     {

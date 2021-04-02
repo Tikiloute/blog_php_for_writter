@@ -1,4 +1,3 @@
-
 <?php
 $page =  $_GET['page'];
 if(isset($_GET['page']) && $round >1){

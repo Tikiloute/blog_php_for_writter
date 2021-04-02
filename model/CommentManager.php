@@ -4,6 +4,8 @@
 class CommentManager extends Manager
 {   
 
+    const LIMIT = 4;
+
     public function newCommentary($id, $comment, $idArticle): void
     {
 

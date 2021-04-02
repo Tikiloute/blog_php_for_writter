@@ -1,6 +1,5 @@
 <?php 
 
-
 ?>
 
         <h3 class="write-article">Ecrivez votre commentaire ici</h3>

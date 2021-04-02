@@ -16,3 +16,4 @@
        } 
 
        require('view\ViewPagingCommentButton.php');
+?>

@@ -1,6 +1,5 @@
-
 <?php 
-    ob_start();
+ob_start();
 ?>
         <script>
             tinymce.init({

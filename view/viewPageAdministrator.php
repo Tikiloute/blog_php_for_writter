@@ -1,7 +1,7 @@
 <?php 
-    session_start();
-    require('viewCreateArticle.php');
-    ob_start();
+session_start();
+require('viewCreateArticle.php');
+ob_start();
    
 ?>
     <div id="connectingForm">
@@ -28,3 +28,4 @@
         require_once('template.php');
         echo $viewLogin;
         require_once('viewLogin.php');
+?>

@@ -44,7 +44,9 @@
         </div>
         </nav>
     </header>
-        <?= $contenu ?>
+        <?= $contenu; ?>
+        
+
     </body>
     </html>
 
