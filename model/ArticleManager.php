@@ -64,4 +64,11 @@ class ArticleManager extends Manager
         $stm->execute();
     }
 
+    public function deleteArticle($id)
+    {
+        $stm = $this->db->prepare("DELETE FROM article WHERE id= :id");
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+    }
+
 }

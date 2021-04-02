@@ -26,6 +26,10 @@ if(isset($_GET["action"])){
             deleteCommentbutton($comment);
             break;
 
+        case 'deleteArticle':
+            deleteArticles($art);
+            break;
+
         case 'accept':
             validateCommentButton($comment);
             break;

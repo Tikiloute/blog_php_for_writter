@@ -16,6 +16,9 @@ $aimArticle = $_GET['modify'] -1;
         <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $articles[$aimArticle]['contenu'] ?></textarea>
         <input type="submit" class="btn btn-primary"/>
     </form>
+    <a href="index.php?action=deleteArticle&modify=<?= $_GET['modify']?>" class="btn btn-danger">Supprimez l'article</a>
+
+
 <?php 
 
 
