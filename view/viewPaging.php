@@ -2,7 +2,6 @@
 ob_start();
 for ($i = 0; $i < $count; $i++){
     if(isset($articlePaging[$i])){
-       // $contain = mb_substr($articlePaging[$i]['contenu'], 0, 180, 'UTF-8');
 ?>
                 <div class="card ">
                     <div class="card-body">
@@ -17,5 +16,4 @@ for ($i = 0; $i < $count; $i++){
 $contenu  = ob_get_clean();
 require('template.php');
 require('view\viewPagingButton.php');
-
 ?>

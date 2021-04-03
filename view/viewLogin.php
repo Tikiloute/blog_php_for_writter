@@ -48,7 +48,7 @@ if(isset($_POST['id']) && isset($_POST['pswd'])){
             require('view\viewWarningcomments.php');
         
         } else {
-            echo "veuillez vous reconnecter";
+            echo "<div class='alert alert-danger text-center'>Veuillez vous connecter</div>";
         }
     
 } 

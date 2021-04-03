@@ -1,5 +1,6 @@
 <?php 
 ob_start();
+
 $aimArticle = $_GET['read']-1;
 
 ?>    
@@ -14,8 +15,7 @@ $aimArticle = $_GET['read']-1;
     </div>
 <?php 
 
-$viewArticle = ob_get_clean();// = contenu 
-$contenu = $viewArticle;
+$contenu = ob_get_clean();
 require('template.php');
 require_once('view\viewCommentary.php');
 

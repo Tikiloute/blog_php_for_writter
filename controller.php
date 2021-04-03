@@ -13,6 +13,29 @@ $comment = new CommentManager();
 /**
  * Concerne les articles 
  */
+
+function ModifyarticleView($art)
+{
+    $articles = $art->read();
+    require('view\viewModifyArticle.php');
+}
+
+function Modifyarticle($art)
+{
+    $idArt = $_GET['modify'];
+    $articles = $art->read();
+    $articlesReverse = $art->readReverse();
+    if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'], $_GET['valid'])){
+        if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle'])) && $_POST['contenuArticle'] != $articles[$idArt-1]['contenu']){
+            $art->modify($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle']);
+            echo "<div class='alert alert-success text-center'> Article modifié avec succès!</div>";
+            $containTxtArea = $articles[$idArt-1]['contenu'];
+        } else {
+            echo "<div class='alert alert-danger text-center'> Erreur, l'article n'a pas été modifié! </div>";
+        }
+    } 
+}
+
 function writeArticle($art)
 {
     if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
@@ -57,27 +80,6 @@ function article($art)
     require('view\viewArticle.php');
 }
 
-function ModifyarticleView($art)
-{
-    $articles = $art->read();
-    require('view\viewModifyArticle.php');
-}
-
-function Modifyarticle($art)
-{
-    $articles = $art->read();
-    $articlesReverse = $art->readReverse();
-    if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'])){
-        if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle']))){
-            $art->modify($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle']);
-            echo "<div class='alert alert-success text-center'> Article modifié avec succès!</div>";
-            header('location : index.php?action=read&reading='.$_GET['modify'].'&comment=1');
-        } else {
-            echo "<div class='alert alert-success text-center'> Erreur, l'article n'a pas été modifié! </div>";
-        }
-    }
-}
-
 function deleteArticles($art)
 {
     $articles = $art->read();
@@ -85,7 +87,7 @@ function deleteArticles($art)
     if(isset($_GET['action']) && isset($_GET['modify'])){
     $art->deleteArticle($_GET['modify']);
     echo " Article supprimé avec succès!";
-    header( "refresh:1;url=index.php?action=articles&page=1");
+    header("refresh:1;url=index.php?action=articles&page=1");
     } else {
         echo "erreur";
     }
