@@ -1,10 +1,10 @@
-let myModal = document.getElementById('myModal');
-let input = document.getElementById('myInput');
+// let myModal = document.getElementById('myModal');
+// let input = document.getElementById('myInput');
 
-// myModal.addEventListener("click", function(){
+// input.addEventListener("click", function(){
 //    alert("delete !!");
 // });
 
-myModal.addEventListener('shown.bs.modal', function () {
-    input.focus();
-  })
+// myModal.addEventListener('shown.bs.modal', function () {
+//     input.focus();
+//   })
