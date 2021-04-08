@@ -14,26 +14,22 @@ $comment = new CommentManager();
  * Concerne les articles 
  */
 
-function ModifyarticleView($art)
-{
-    $articles = $art->read();
-    require('view\viewModifyArticle.php');
-}
-
 function Modifyarticle($art)
 {
+    $selectArticle = $art->selectArticle($_GET["modify"]);
     $idArt = $_GET['modify'];
     $articles = $art->read();
     $articlesReverse = $art->readReverse();
+    require('view\viewModifyArticle.php');
     if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'], $_GET['valid'])){
-        if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle'])) && $_POST['contenuArticle'] != $articles[$idArt-1]['contenu']){
+        if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle'])) && $_POST['contenuArticle'] != $selectArticle[0]['contenu']){
             $art->modify($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle']);
             echo "<div class='alert alert-success text-center'> Article modifié avec succès!</div>";
-            $containTxtArea = $articles[$idArt-1]['contenu'];
         } else {
             echo "<div class='alert alert-danger text-center'> Erreur, l'article n'a pas été modifié! </div>";
         }
-    } 
+    }
+
 }
 
 function writeArticle($art)
@@ -76,6 +72,7 @@ function articlesList($art)
 
 function article($art)
 {
+    $selectArticle = $art->selectArticle($_GET["read"]);
     $articles = $art->read();
     require('view\viewArticle.php');
 }
@@ -111,6 +108,7 @@ function writeComment($comment)
 
 function commentsList($art, $comment)
 {
+    $selectComment = $comment->selectComment($_GET["read"]);
     $articles = $art->read();
     $limitC = $comment::LIMIT;//pour les const on utilise  :: plutot que ->
     $countC = [];
@@ -127,23 +125,25 @@ function commentsList($art, $comment)
         $offset = ($_GET['comment']-1)*$limitC;
     }
     $commentsPaging = $comment->paging($limitC, $offset, $_GET['read']);
+    $rw = $comment->read();
+    print_r($selectComment);
     require('view\viewPagingComments.php');
 }
 
 function WarningComments($comment, $art)
 {
-   $articles = $art->read();
-   $warnings = $comment->readWarning();
-   $warning_arr_length = count($warnings);
-   if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['commentaire'])){
+    //require_once('view\viewPagingComments.php');
+    $selectArticle = $art->selectArticle($_GET["read"]);
+    $articles = $art->read();
+    $warnings = $comment->readWarning();
+    $warning_arr_length = count($warnings);
+    if (isset($_GET['read']) && isset($_GET['id']) && isset($_GET['commentaire'])){
         $comment->newCommentaryWarning($_GET['id'], $_GET['commentaire'],$_GET['idCommentaire'],$_GET['date'], $_GET['nomArticle'], $_GET['read']);
         echo "votre commentaire a bien été signalé !";
         header("refresh:1;url=index.php?action=reading&read=".$_GET['read']."&comment=1");
-
-   }else{
-        "erreur";
-   }
-
+    }else{
+        echo "erreur";
+    }
 }
 
 function deleteCommentbutton($comment)

@@ -54,7 +54,6 @@ class ArticleManager extends Manager
         return ceil($count[0]/$numberArtPerPage); 
     }
 
-
     public function modify($titre, $contenu, $id): void
     {   
         $stm = $this->db->prepare("UPDATE article SET titre= :title, contenu= :content WHERE id= :id");
@@ -69,6 +68,17 @@ class ArticleManager extends Manager
         $stm = $this->db->prepare("DELETE FROM article WHERE id= :id");
         $stm->bindParam(":id", $id);
         $stm->execute();
+    }
+
+
+    public function selectArticle($id)
+    {
+        $stm = $this->db->prepare("SELECT * FROM article WHERE id= :id");
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+        $ArticlesSelect = $stm->fetchAll();
+        return $ArticlesSelect; 
+
     }
 
 }

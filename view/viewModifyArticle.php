@@ -1,13 +1,12 @@
 <?php
 ob_start();
-$aimArticle = $_GET['modify'] -1;
-$containTxtArea = $articles[$aimArticle]['contenu'];
 if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'], $_GET['valid'])){
-    if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle'])) && $_POST['contenuArticle'] != $articles[$aimArticle]['contenu']){
+    if((!empty($_POST['titreArticle'])) && (!empty($_POST['contenuArticle'])) && (!empty($_POST['idArticle'])) && $_POST['contenuArticle'] != $selectArticle[0]['contenu']){
         header("refresh:1;url=index.php?action=reading&read=".$_POST['idArticle']."&comment=1");
     }
 }
 ?>      
+        <!-- Mise en place de tinyMce (script) -->
     <script>
         tinymce.init({
             selector: '#ModifyTextArea'
@@ -17,13 +16,15 @@ if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'], 
     <form action="index.php?action=edit&modify=<?= $_GET['modify']?>&valid=true" method="POST" class="card" style="width: 20rem;">
         <input type="hidden" name="action" value="editArticle">
         <input type="hidden" name="idArticle" value="<?= $_GET['modify'] ?>">
-        <textarea placeholder="titre" name="titreArticle"><?= $articles[$aimArticle]['titre'] ?></textarea>
-        <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $containTxtArea?></textarea>
+        <textarea placeholder="titre" name="titreArticle"><?= $selectArticle[0]['titre'] ?></textarea>
+        <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $selectArticle[0]['contenu']?></textarea>
         <input type="submit" class="btn btn-primary"/>
     </form>
 
+                        <!-- bouton de la modal -->
     <button type="button" class="btn btn-danger" id='myInput' data-bs-toggle="modal" data-bs-target="#myModal">Supprimer l'article</button>
 
+                         <!-- modal -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -36,6 +37,7 @@ if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $_POST['idArticle'], 
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <!-- bouton suppression de l'article -->
             <a href="index.php?action=deleteArticle&modify=<?= $_GET['modify']?>" class="btn btn-danger">Supprimer l'article</a>
         </div>
         </div>

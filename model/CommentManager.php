@@ -18,7 +18,7 @@ class CommentManager extends Manager
 
     public function read(): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, idArticle, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date  from commentaire');
+        $stm = $this->db->prepare('SELECT c.id, c.identifiant, c.commentaire, c.idArticle, a.id, a.titre ,DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date from commentaire c INNER JOIN article a ON c.idArticle = a.id');
         $stm->execute();
         $comments = $stm->fetchAll();
         return $comments; 
@@ -53,14 +53,14 @@ class CommentManager extends Manager
 
     public function deleteCommentWarning($idWarningComment): void
     {
-        $stm = $this->db->prepare("DELETE FROM commentaire_moderation WHERE idCommentaire = :id");
+        $stm = $this->db->prepare("DELETE FROM commentaire_moderation WHERE id = :id");
         $stm->bindParam(":id", $idWarningComment);
         $stm->execute();
     }
 
     public function paging($limit,$offset,$read): array
     {
-        $stm = $this->db->prepare('SELECT *, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date FROM commentaire WHERE idArticle = :numberArticle ORDER BY idArticle DESC LIMIT :limit OFFSET :offset');
+        $stm = $this->db->prepare('SELECT c.id, c.identifiant, c.commentaire, c.idArticle, a.id, a.titre , DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date FROM commentaire c INNER JOIN article a ON c.idArticle = a.id WHERE idArticle = :numberArticle ORDER BY idArticle DESC LIMIT :limit OFFSET :offset');
         $stm->bindParam(":offset", $offset,PDO::PARAM_INT);
         $stm->bindParam(":limit", $limit,PDO::PARAM_INT);
         $stm->bindParam(":numberArticle", $read ,PDO::PARAM_INT);
@@ -83,6 +83,16 @@ class CommentManager extends Manager
         $count = $this->countComment($read);
         $numberComPerPage = $numberCommentsPerPage;
         return ceil($count[0]/$numberComPerPage); 
+    }
+
+    public function selectComment($id)
+    {
+        $stm = $this->db->prepare("SELECT c.id, c.identifiant, c.commentaire, c.date, c.idArticle, a.id FROM commentaire c INNER JOIN article a ON c.idArticle = a.id WHERE a.id= :id");
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+        $ArticlesSelect = $stm->fetchAll();
+        return $ArticlesSelect; 
+
     }
 
 }

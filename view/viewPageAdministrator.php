@@ -22,7 +22,7 @@ ob_start();
     </div>
 
 <?php
-        $contenu  = ob_get_clean();
-        require_once('template.php');
-        require_once('viewLogin.php');
+    $contenu  = ob_get_clean();
+    require_once('template.php');
+    require_once('viewLogin.php');
 ?>
